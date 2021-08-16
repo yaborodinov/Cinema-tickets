@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>new project!</h1>
+      <h1>Бронирование билетов</h1>
       < Button variant="primary"> Primary </Button>
     </div>
   );
