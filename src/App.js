@@ -35,7 +35,7 @@ function App() {
 
       <Flex direction="column">
         <Console color={color} />
-        < CreatedButton align="flex-end" mt="10px"> Send </CreatedButton>
+        < CreatedButton large outline color={"blue"} align="flex-end" mt="10px"> Send </CreatedButton>
       </Flex>
       
       < Button variant="primary" > Primary </Button>
