@@ -1,5 +1,5 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import styled from "styled-components";
 import './App.css';
 
@@ -11,10 +11,10 @@ import CreatedButton from "./components/CreatedButton";
 
 
 const AppWrapper = styled.div`
-width:100 %;
+width:100%;
 min-height:100vh;
 padding:2rem;
-background:#ccc;
+background:#000;
 `;
 
 
@@ -25,7 +25,7 @@ background:#ccc;
 
 function App() {
   
-  const [color,setColor]= React.useState("blue")
+  const [color,setColor]= React.useState("green")
   return (
     < AppWrapper>
       
@@ -34,11 +34,11 @@ function App() {
       </Flex>
 
       <Flex direction="column">
-        <Console color={color} />
-        < CreatedButton large   color={"blue"} align="flex-end" mt="10px"> Send </CreatedButton>
+        <Console color="green" />
+        < CreatedButton large   color={color} align="flex-end" mt="10px"> Send </CreatedButton>
       </Flex>
       
-      < Button variant="primary" > Primary </Button>
+    
     </AppWrapper>
   );
 }

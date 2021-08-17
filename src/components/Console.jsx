@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import Flex from './Flex';
+import Line from './Line';
 
 
 
@@ -10,10 +12,9 @@ const StyledConsole = styled("textarea")`
   height: 70vh;
   font-size: 24px;
   border: none;
-  background: #a3a3cf;
+  background: #000;
   resize:none;
-  padding: 15px;
-  color: ${({color})=>(color) || "#000"};
+  color: ${({color})=>color || "red"};
   &:focus{
     outline:none;
   }
@@ -21,11 +22,26 @@ const StyledConsole = styled("textarea")`
 
 
 
-function Console(props) {
-  console.log(props.color)
+function Console({ color, ...props }) {
+  console.log(props)
+  
+  const [lines, setLines] = React.useState(["C/users/ULBI_TV>"])
+  
+  const onKeyPress = (e) => {
+    if (e.charCode === 13) {
+      setLines([...lines, "C/users/ULBI_TV>"]);
+    }
+  }
   return (
-    <StyledConsole {...props}/>
-  )
+    <Flex margin="10px 0">
+      <Flex direction="column" margin="0 10px">
+        {lines.map((line,index) => (
+          <Line key={index} color="green">{line}</Line>
+        ))}
+      </Flex>
+      <StyledConsole onKeyPress={onKeyPress} color={color} {...props} />
+    </Flex>
+  );
 }
 
 export default Console
