@@ -3,6 +3,10 @@ import Button from 'react-bootstrap/Button';
 import styled from "styled-components";
 import './App.css';
 
+import Title from "./components/Title";
+import Flex from "./components/Flex";
+import Console from "./components/Console";
+import CreatedButton from "./components/CreatedButton";
 
 
 
@@ -13,16 +17,28 @@ padding:2rem;
 background:#ccc;
 `;
 
-const Title = styled.h1 `
-  color: ${props=>(props.red?"red":"blue")}
-`;
+
+
+
+
 
 
 function App() {
+  
+  const [color,setColor]= React.useState("blue")
   return (
     < AppWrapper>
-      < Title red > Booking Tickets </Title>
-      < Button variant="primary"> Primary </Button>
+      
+      <Flex justify="center">
+        <Title color={color}> Booking Tickets </Title>
+      </Flex>
+
+      <Flex direction="column">
+        <Console color={color} />
+        < CreatedButton align="flex-end" mt="10px"> Send </CreatedButton>
+      </Flex>
+      
+      < Button variant="primary" > Primary </Button>
     </AppWrapper>
   );
 }
