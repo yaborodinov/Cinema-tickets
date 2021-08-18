@@ -16,11 +16,6 @@ const StyledFlexUl = styled("ul")`
       border-bottom: 1px solid #fff;
     `}
 `;
-function FlexUl(props) {
-  return (
-    <StyledFlexUl {...props}/>
-      
-  )
-}
+const FlexUl=(props)=> <StyledFlexUl {...props}/>
 
 export default FlexUl

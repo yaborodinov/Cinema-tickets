@@ -20,10 +20,6 @@ const StyledTime = styled.li`
   }
 `;
 
-function Time({time}) {
-  return (
-    <StyledTime>{time}</StyledTime>
-  )
-}
+const Time=({time})=> <StyledTime>{time}</StyledTime>
 
 export default Time

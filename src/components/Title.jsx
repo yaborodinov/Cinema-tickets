@@ -10,13 +10,6 @@ const Name = styled("h1")`
   
   
 `;
-function Title(props) {
-  
-  return (
-    <Name {...props}/>
-      
-    
-  )
-}
+const Title=(props) =><Name {...props}/>
 
 export default Title

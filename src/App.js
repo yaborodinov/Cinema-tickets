@@ -5,7 +5,6 @@ import {
   Container
 } from 'react-bootstrap';
 import styled,{css} from "styled-components";
-import './App.css';
 
 import Title from "./components/Title";
 import Flex from "./components/Flex";
@@ -36,7 +35,7 @@ const StyledCol = styled(Col)
 
 
 function App() {
-  const [session, setSession] = React.useState(["10:00", "12:00", "14:00", "16:00","18:00","20:00"])
+  const session=["10:00", "12:00", "14:00", "16:00","18:00","20:00"]
   return (
     < AppWrapper>
       <Container >
@@ -45,11 +44,11 @@ function App() {
       </Flex>
 
         <Row>
-          <StyledCol width350>
+          <StyledCol width350="true">
             <Calendar />
           </StyledCol>
           <Col> 
-            <FlexUl justify="space-between" margin = "20px 0" >
+            <FlexUl justify="space-between" margin="20px 0" >
               {
                 session.map((item,index) => <Time key={`${item}_${index}`} margin="10px" time={item} />)
               }

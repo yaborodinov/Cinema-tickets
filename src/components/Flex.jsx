@@ -13,10 +13,6 @@ const StyledFlex = styled("div")`
   `}
 `;
 
-function Flex(props) {
-  return(
-    <StyledFlex {...props} />
-  )
-}
+const Flex=(props) =><StyledFlex {...props} />
 
 export default Flex
