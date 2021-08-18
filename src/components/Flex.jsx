@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 
 
 const StyledFlex = styled("div")`
@@ -8,10 +8,12 @@ const StyledFlex = styled("div")`
   align-items: ${(props) => props.align || "stretch"};
   justify-content: ${(props) => props.justify || "stretch"};
   margin: ${({ margin }) => margin || "0"};
+  ${(props) => props.underline && css`
+    border-bottom: 1px solid #fff;
+  `}
 `;
 
 function Flex(props) {
-  console.log(props)
   return(
     <StyledFlex {...props} />
   )
