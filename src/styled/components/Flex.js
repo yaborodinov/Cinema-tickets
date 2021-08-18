@@ -1,6 +1,4 @@
-import styled, {
-  css
-} from 'styled-components';
+import styled, {css} from 'styled-components';
 
 
 export const StyledFlex = styled('div')

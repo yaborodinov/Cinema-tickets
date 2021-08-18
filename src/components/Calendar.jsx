@@ -18,7 +18,6 @@ function Calendar(props) {
       <Row>
         {dates.map((el, ind) => <StyledCol fixWidth key={`${el}_${ind}`}>{el}</StyledCol>)}
       </Row>
-
     </>
   );
 }

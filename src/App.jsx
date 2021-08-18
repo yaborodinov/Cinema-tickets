@@ -2,16 +2,8 @@ import React from 'react';
 import {Row,Col,Container} from 'react-bootstrap';
 import styled,{css} from 'styled-components';
 
-import Title from './components/Title';
-import Flex from './components/Flex';
-import FlexUl from './components/FlexUl';
-import Time from './components/Time';
-import Calendar from './components/Calendar';
+import { Time, Title, Flex, FlexUl, Calendar } from './components';
 import  {AppWrapper}  from './styled/AppWrapper';
-
-
-
-
 
 
 
@@ -34,7 +26,6 @@ function App() {
       < Flex underline justify = 'center' >
         <Title > Booking Tickets </Title>
       </Flex>
-
         <Row>
           <StyledCol width350='true'>
             <Calendar/>
@@ -44,15 +35,11 @@ function App() {
               {
                 session.map((item,index) => <Time key={`${item}_${index}`} margin='10px' time={item} />)
               }
-              
             </FlexUl>
           </Col>
-          
         </Row>
-
       <Flex direction='column'>
       </Flex>
-      
     </Container >
     </AppWrapper>
   );
