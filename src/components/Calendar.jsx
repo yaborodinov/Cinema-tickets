@@ -1,38 +1,17 @@
 import React from 'react';
-import styled, {css} from "styled-components";
 import {Row} from "react-bootstrap"
 
-
-const StyledCalendarTitle = styled("h3")`
-  color: #fff;
-  margin: 20px 0;
-  text-align: center;
-  font-size: 18px;
-`
-const StyledCol = styled("div")`
-  ${(props) =>
-    props.fixWidth &&
-    css`
-      max-width: 51.5px;
-      min-width: 51.5px;
-      margin: 5px 0;
-      text-align: center;
-      color: #fff;
-      &:hover {
-        cursor: pointer;
-        color: #feef5c;
-      }
-    `}
-`;
+import {StyledCalendarTitle, StyledCol} from "../styled/components/Calendar"
 
 
 
-function Calendar() {
+
+function Calendar(props) {
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
   const dates = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
   return (
     <>
-      <StyledCalendarTitle>Calendar</StyledCalendarTitle>
+      <StyledCalendarTitle {...props}>Calendar</StyledCalendarTitle>
       <Row>
         {weekDays.map((el, index) => <StyledCol fixedWidth key={`${el}_${index}`}>{el}</StyledCol>)}
       </Row>
