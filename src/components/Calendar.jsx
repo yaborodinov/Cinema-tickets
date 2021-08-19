@@ -5,7 +5,6 @@ import {
   StyledCalendarTitle,
   StyledCol,
   CalendarWrapper,
-  StyledRow,
 } from "../styled/components/Calendar";
 
 
@@ -18,14 +17,14 @@ function Calendar(props) {
     <CalendarWrapper>
       <StyledCalendarTitle {...props}>Calendar</StyledCalendarTitle>
 
-      <StyledRow underline marginBottom="5px">
+      <Row  className="mb-1 border-bottom border-white">
         {weekDays.map((el, index) => (
           <StyledCol key={`${el}_${index}`}>{el}</StyledCol>
         ))}
-      </StyledRow>
+      </Row>
       <Row>
         {dates.map((el, ind) => (
-          <StyledCol border key={`${el}_${ind}`}>
+          <StyledCol  key={`${el}_${ind}`}>
             {el}
           </StyledCol>
         ))}

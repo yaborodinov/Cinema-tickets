@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {Col,Row} from "react-bootstrap"
+import {Col} from "react-bootstrap"
 
 export const StyledCalendarTitle = styled('h3')`
   color: ${props=>props.color || props.theme.colors.primary};
@@ -17,7 +17,7 @@ flex:0 0 auto;
 color: ${props => props.color || props.theme.colors.primary};
 transition: ${props => props.theme.transition.transition};
 ${props => props.border && css`
-  border:1px solid transparent;
+  border:1px dashed transparent;
   &:hover{
     border:1px dashed ${props=>props.theme.colors.yellow};
   }
@@ -33,19 +33,12 @@ ${props => props.border && css`
 `;
 
 export const CalendarWrapper = styled("div")`
-  width:350px;
+  max-width:350px;
+  min-width:300px;
   margin-left: auto;
   margin-right: auto;
 `;
 
-export const StyledRow = styled(Row)`
-  ${props => props.underline && css`
-    border-bottom: 1px solid ${props=>props.color || props.theme.colors.primary};
-  `};
-  ${props => props.marginBottom && css `
-    margin-bottom:  ${props=>props.marginBottom || "0"};
-  `};
-`
 
 
 

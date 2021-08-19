@@ -9,10 +9,12 @@ export const StyledTime = styled.li `
   color: ${props=>props.theme.colors.primary};
   box-shadow: 0px 0px 15px 4px #9363eb;
   font-size: 16px;
-  transition: all linear 0.1s;
+  transition: ${props=>props.theme.transition.transition};
   margin: 10px;
   &:hover {
     cursor: pointer;
-    background-color: ${props=>props.theme.colors.yellow}; 
+    background-color: ${props => props.background || props.theme.colors.yellow};
+    color:${props=>props.theme.colors.secondary};
   }
+
 `;
