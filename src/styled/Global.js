@@ -14,6 +14,9 @@ export const Global = createGlobalStyle `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 };
+ul,ol,li{
+  list-style: none;
+}
 `
 
 
@@ -23,5 +26,6 @@ export const theme = {
     secondary: "#3E3F43",
     violet: "#6d53c6",
     yellow: "#feef5c",
+    backgroundViolet: "#aa85ee",
   }
 }
