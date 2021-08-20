@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
 
 import { Time, Title, FlexUl, Calendar,Popup } from "./components";
-import  {AppWrapper}  from './styled/AppWrapper';
+import  {AppWrapper}  from "./styled/AppWrapper";
 
 
 
@@ -10,7 +10,7 @@ import  {AppWrapper}  from './styled/AppWrapper';
 
 
 function App() {
-  const session = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00']
+  const session = ["10:00", "12:00", "14:00", "16:00", "18:00", "20:00"]
   const [modalShow, setModalShow] = React.useState(false);
 
  

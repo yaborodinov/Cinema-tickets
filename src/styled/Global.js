@@ -20,16 +20,16 @@ ul,ol,li{
 }
 `
 
-
 export const theme = {
   colors: {
-    primary: "#FEFEFE",
-    secondary: "#3E3F43",
-    violet: "#6d53c6",
-    yellow: "#feef5c",
-    backgroundViolet: "#aa85ee",
+    primary: '#FEFEFE',
+    secondary: '#3E3F43',
+    violet: '#6d53c6',
+    yellow: '#feef5c',
+    backgroundViolet: '#aa85ee',
+    disabled:'#ccc',
   },
   transition:{
-    transition: "all 0.2s linear",
+    transition: 'all 0.2s linear',
   },
 }

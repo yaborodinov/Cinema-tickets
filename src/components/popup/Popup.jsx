@@ -1,11 +1,13 @@
-import React from 'react';
-import { Modal } from "react-bootstrap"
+import React, {useState} from "react";
+import { Modal,Row,Col } from "react-bootstrap"
 
-import { StyledButton } from "../../styled/components/popup/StyledPopup";
+import { StyledButton,StyledSit, StyledHeader } from "../../styled/components/popup/StyledPopup";
 
 import ScreenImg from "../../images/cinemaScreen.png"
 
 function Popup(props) {
+  const sits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
+  const [isFree, setIsFree] = useState(true);
   return (
     <Modal
       {...props}
@@ -13,17 +15,30 @@ function Popup(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton className="border-0">
-        <Modal.Title id="contained-modal-title-vcenter" >
+      <StyledHeader closeButton className="border-0">
+        <Modal.Title id="contained-modal-title-vcenter" className="mx-auto">
           Choose your favourite sits
         </Modal.Title>
-      </Modal.Header>
+      </StyledHeader>
       <Modal.Body className="d-flex flex-column justify-content-center">
-        <img className="w-75 ms-auto me-auto" src={ScreenImg} alt="#"/>
-        
+        <img className="w-75 mx-auto" src={ScreenImg} alt="#" />
+        <Row className="w-75 mx-auto" xs={6}>
+          {sits.map((el, index) => (
+            <Col
+              className="d-flex justify-content-center mt-2"
+              key={`${el}_${index}`}
+            >
+              <StyledSit className={isFree === true? "":"active"}>
+                {el}
+              </StyledSit>
+            </Col>
+          ))}
+        </Row>
       </Modal.Body>
       <Modal.Footer className="border-0">
-        <StyledButton variant="outline-primary" onClick={props.onHide}>Reserve</StyledButton>
+        <StyledButton variant="outline-primary" onClick={props.onHide}>
+          Reserve
+        </StyledButton>
       </Modal.Footer>
     </Modal>
   );

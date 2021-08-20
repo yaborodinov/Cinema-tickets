@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {Col} from "react-bootstrap"
+import {Col} from 'react-bootstrap'
 
 export const StyledCalendarTitle = styled('h3')`
   color: ${props=>props.color || props.theme.colors.primary};
@@ -32,7 +32,7 @@ ${props => props.border && css`
 
 `;
 
-export const CalendarWrapper = styled("div")`
+export const CalendarWrapper = styled('div')`
   max-width:350px;
   min-width:300px;
   margin-left: auto;
