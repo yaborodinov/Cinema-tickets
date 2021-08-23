@@ -1,8 +1,7 @@
-import React from "react"
+import React from "react";
 
-import { StyledFlexUl } from "../styled/components/FlexUl"
+import { StyledFlexUl } from "../styled/components/FlexUl";
 
-
-const FlexUl=(props)=> <StyledFlexUl {...props}/>
+const FlexUl = (props) => <StyledFlexUl {...props}/>
 
 export default FlexUl

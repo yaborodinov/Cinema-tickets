@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import { Modal,Row,Col } from "react-bootstrap"
+import React, { useState } from "react";
+import { Modal, Row, Col } from "react-bootstrap";
 
-import { StyledButton,StyledSit, StyledHeader } from "../../styled/components/popup/StyledPopup";
+import { StyledButton, StyledSit, StyledHeader } from "../../styled/components/popup/StyledPopup";
 
 import ScreenImg from "../../images/cinemaScreen.png"
 
@@ -28,7 +28,7 @@ function Popup(props) {
               className="d-flex justify-content-center mt-2"
               key={`${el}_${index}`}
             >
-              <StyledSit className={isFree === true? "":"active"}>
+              <StyledSit className={isFree === true? "" : "active"}>
                 {el}
               </StyledSit>
             </Col>

@@ -1,8 +1,11 @@
-import React from "react"
+import React from "react";
 
-import { StyledTime } from "../styled/components/Time"
+import { StyledTime } from "../styled/components/Time";
 
+function Time({ time, onShow }) {
+  return(
+    <StyledTime onClick={onShow} background="#cbafff">{ time}</StyledTime>
+)}
+;
 
-const Time = ({ time, onShow }) => <StyledTime onClick={onShow}  background="#cbafff">{time}</StyledTime>;
-
-export default Time
+export default Time;

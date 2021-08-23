@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const StyledTime = styled.li `
   list-style: none;
   background-color: #aa85ee;
@@ -14,7 +13,6 @@ export const StyledTime = styled.li `
   &:hover {
     cursor: pointer;
     background-color: ${props => props.background || props.theme.colors.yellow};
-    color:${props=>props.theme.colors.secondary};
+    color: ${props=>props.theme.colors.secondary};
   }
-
 `;

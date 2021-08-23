@@ -1,13 +1,10 @@
-import {
-  createGlobalStyle,
-  
-} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle `
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -27,9 +24,9 @@ export const theme = {
     violet: '#6d53c6',
     yellow: '#feef5c',
     backgroundViolet: '#aa85ee',
-    disabled:'#ccc',
+    disabled: '#ccc',
   },
-  transition:{
+  transition: {
     transition: 'all 0.2s linear',
   },
 }
