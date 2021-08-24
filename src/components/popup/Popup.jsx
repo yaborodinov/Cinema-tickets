@@ -30,7 +30,7 @@ function Popup(props) {
               className="d-flex justify-content-center mt-2"
               key={`${el}_${index}`}
             >
-              <StyledSit className={el ? "" : "active"}>{index+1}</StyledSit>
+              <StyledSit className={el ? "" : "disabled"}>{index+1}</StyledSit>
             </Col>
           ))}
         </Row>

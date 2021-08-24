@@ -1,7 +1,6 @@
 import React,{useState} from "react";
 import { Row, Col } from "react-bootstrap";
 
-
 import { Time, FlexUl } from "./index";
 
 import {
@@ -10,10 +9,10 @@ import {
   CalendarWrapper,
 } from "../styled/components/Calendar";
 
-function Calendar({ dates, onShow, handlerSelectCurrentTime },props) {
+function Calendar({ dates, onShow, handlerSelectCurrentTime }) {
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const [currentDateSessions, setCurrentDateSessions] = useState([]);
-  const [currentDate, setCurrentDate]= useState(1)
+  const [currentDateSessions, setCurrentDateSessions] = useState( [] );
+  const [currentDate, setCurrentDate]= useState(null)
   
   return (
     <Row className="align-items-center">
@@ -44,7 +43,7 @@ function Calendar({ dates, onShow, handlerSelectCurrentTime },props) {
       </Col>
       <Col>
         <StyledCalendarTitle>Sessions</StyledCalendarTitle>
-        <FlexUl className="d-flex mx-sm-auto">
+        <FlexUl className="d-flex mx-auto">
           {currentDateSessions.map((item, index) => {
             const time = Object.keys(item);
             const [activeSit] = Object.entries(item);

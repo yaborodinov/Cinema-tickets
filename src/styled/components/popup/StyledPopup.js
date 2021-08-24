@@ -41,16 +41,10 @@ export const StyledSit = styled('div')`
     background-color: ${props => props.theme.colors.violet};
     color: ${props => props.theme.colors.primary};
   };
-  &.active{
-    background-color: ${props => props.theme.colors.violet};
-    color: ${props => props.theme.colors.primary};
-  }
-  
-  ${props => props.disabled && css`
+  &.disabled {
     background-color: ${props => props.theme.colors.disabled};
     color: ${props => props.theme.colors.primary};
-    &:hover{
-      cursor: default;
-    };
-  `};
+    border: 1px solid ${props => props.theme.colors.secondary};
+    pointer-events: none;
+  };
 `
