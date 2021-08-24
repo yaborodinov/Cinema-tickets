@@ -19,8 +19,12 @@ export const StyledCol = styled(Col)`
     &:hover{
       border: 1px dashed ${props=>props.theme.colors.yellow};
     };
-  `}
-
+  `};
+  &.active{
+    border: 1px dashed ${props => props.theme.colors.yellow};
+    color:${props => props.theme.colors.yellow};
+  }
+  
   &:hover{
     cursor: pointer;
     color: ${props => props.theme.colors.yellow};

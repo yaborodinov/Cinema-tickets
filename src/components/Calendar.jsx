@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import { Row, Col } from "react-bootstrap";
 
+
 import { Time, FlexUl } from "./index";
 
 import {
@@ -9,9 +10,11 @@ import {
   CalendarWrapper,
 } from "../styled/components/Calendar";
 
-function Calendar({ dates, onShow, handlerSelectCurrentTime }) {
+function Calendar({ dates, onShow, handlerSelectCurrentTime },props) {
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const [currentDate, setCurrentDate] = useState([]);
+  const [currentDateSessions, setCurrentDateSessions] = useState([]);
+  const [currentDate, setCurrentDate]= useState(1)
+  
   return (
     <Row className="align-items-center">
       <Col>
@@ -25,9 +28,11 @@ function Calendar({ dates, onShow, handlerSelectCurrentTime }) {
           <Row>
             {dates.map((el, ind) => (
               <StyledCol
+                className={currentDate === el.date ? "active" : ""}
                 border="true"
                 onClick={() => {
-                  setCurrentDate(el.sessions);
+                  setCurrentDateSessions(el.sessions)
+                  setCurrentDate(el.date)
                 }}
                 key={`${el}_${ind}`}
               >
@@ -38,8 +43,8 @@ function Calendar({ dates, onShow, handlerSelectCurrentTime }) {
         </CalendarWrapper>
       </Col>
       <Col>
-        <FlexUl className="d-flex mx-sm-auto mx-md-0 mt-sm-4 ps-sm-0 ps-md-4">
-          {currentDate.map((item, index) => {
+        <FlexUl className="d-flex mx-sm-auto mx-md-0 mt-sm-4 ps-sm-0 ps-md-4" >
+          {currentDateSessions.map((item, index) => {
             const time = Object.keys(item);
             const [activeSit] = Object.entries(item);
             return (
