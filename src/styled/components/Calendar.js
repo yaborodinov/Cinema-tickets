@@ -36,4 +36,5 @@ export const CalendarWrapper = styled('div')`
   min-width: 300px;
   margin-left: auto;
   margin-right: auto;
+  padding: 30px 0;
 `;

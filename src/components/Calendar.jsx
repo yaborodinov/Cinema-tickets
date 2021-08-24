@@ -31,8 +31,8 @@ function Calendar({ dates, onShow, handlerSelectCurrentTime },props) {
                 className={currentDate === el.date ? "active" : ""}
                 border="true"
                 onClick={() => {
-                  setCurrentDateSessions(el.sessions)
-                  setCurrentDate(el.date)
+                  setCurrentDateSessions(el.sessions);
+                  setCurrentDate(el.date);
                 }}
                 key={`${el}_${ind}`}
               >
@@ -43,7 +43,8 @@ function Calendar({ dates, onShow, handlerSelectCurrentTime },props) {
         </CalendarWrapper>
       </Col>
       <Col>
-        <FlexUl className="d-flex mx-sm-auto mx-md-0 mt-sm-4 ps-sm-0 ps-md-4" >
+        <StyledCalendarTitle>Sessions</StyledCalendarTitle>
+        <FlexUl className="d-flex mx-sm-auto">
           {currentDateSessions.map((item, index) => {
             const time = Object.keys(item);
             const [activeSit] = Object.entries(item);
