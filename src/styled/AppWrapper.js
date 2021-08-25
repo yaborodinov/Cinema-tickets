@@ -5,5 +5,4 @@ export const AppWrapper = styled.div`
   min-height: 100vh;
   padding: 2rem;
   background: ${props => props.color || props.theme.colors.violet};
-  
 `;

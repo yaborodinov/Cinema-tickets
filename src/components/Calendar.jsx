@@ -9,11 +9,10 @@ import {
   CalendarWrapper,
 } from "../styled/components/Calendar";
 
-function Calendar({ dates, onShow, handlerSelectCurrentTime }) {
+const Calendar = ({ dates, onShow, handlerSelectCurrentTime }) => {
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const [currentDateSessions, setCurrentDateSessions] = useState( [] );
   const [currentDate, setCurrentDate]= useState(null)
-  
   return (
     <Row className="align-items-center">
       <Col>
@@ -29,6 +28,7 @@ function Calendar({ dates, onShow, handlerSelectCurrentTime }) {
               <StyledCol
                 className={currentDate === el.date ? "active" : ""}
                 border="true"
+
                 onClick={() => {
                   setCurrentDateSessions(el.sessions);
                   setCurrentDate(el.date);

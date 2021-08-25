@@ -2,9 +2,7 @@ import React from "react";
 
 import { StyledTime } from "../styled/components/Time";
 
-function Time({ time, onShow, activeSit, handlerSelectCurrentTime }) {
-  return (
-    <StyledTime
+const Time = ({ time, onShow, activeSit, handlerSelectCurrentTime }) => <StyledTime
       onClick={() => {
         handlerSelectCurrentTime(activeSit);
         onShow();
@@ -13,8 +11,5 @@ function Time({ time, onShow, activeSit, handlerSelectCurrentTime }) {
     >
       {time}
     </StyledTime>
-  );
-}
-;
 
 export default Time;

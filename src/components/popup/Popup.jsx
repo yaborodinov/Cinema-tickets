@@ -1,15 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { Modal, Row, Col } from "react-bootstrap";
+import classNames from "classnames";
 
 import { StyledButton, StyledSit, StyledHeader } from "../../styled/components/popup/StyledPopup";
 
 import ScreenImg from "../../images/cinemaScreen.png";
 
-function Popup(props) {
+const Popup = (props) => {
   const info = {
     time: props.time[0],
     activeSit: props.time[1] ? Object.values(props.time[1]) : [] ,
   };
+  const [choosenSit, setChoosenSit] = useState(1);
   return (
     <Modal
       {...props}
@@ -30,7 +32,15 @@ function Popup(props) {
               className="d-flex justify-content-center mt-2"
               key={`${el}_${index}`}
             >
-              <StyledSit className={el ? "" : "disabled"}>{index+1}</StyledSit>
+              <StyledSit
+                onClick={() => setChoosenSit(index)}
+                className={classNames({
+                  disabled: !el === true,
+                  active: choosenSit === index,
+                })}
+              >
+                {index + 1}
+              </StyledSit>
             </Col>
           ))}
         </Row>

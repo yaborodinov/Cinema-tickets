@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 import { Title, Calendar,Popup } from "./components";
 import { AppWrapper } from "./styled/AppWrapper";
 
-function App() {
+const App = () => {
   const [modalShow, setModalShow] = useState(false);
   const [dates, setDates] = useState( [] );
   const [currentTime, setCurrentTime] = useState( [] );
@@ -20,7 +20,6 @@ function App() {
   const handlerSelectCurrentTime = (item) => {
     setCurrentTime(item)
   }
-
   return (
     <AppWrapper>
       <Container>

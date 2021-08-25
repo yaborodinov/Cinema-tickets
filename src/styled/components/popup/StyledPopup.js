@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
@@ -47,4 +47,8 @@ export const StyledSit = styled('div')`
     border: 1px solid ${props => props.theme.colors.secondary};
     pointer-events: none;
   };
+  &.active{
+    background-color: ${props => props.theme.colors.violet};
+    color: ${props => props.theme.colors.primary};
+  }
 `
