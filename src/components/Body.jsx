@@ -1,5 +1,6 @@
 import React,{useState} from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, CardGroup, Card } from "react-bootstrap";
+import classNames from "classnames";
 
 import { Time, FlexUl } from "./index";
 
@@ -7,14 +8,18 @@ import {
   StyledCalendarTitle,
   StyledCol,
   CalendarWrapper,
-} from "../styled/components/Calendar";
+} from "../styled/components/Body";
 
-const Calendar = ({ dates, onShow, handlerSelectCurrentTime }) => {
+const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const [currentDateSessions, setCurrentDateSessions] = useState( [] );
-  const [currentDate, setCurrentDate]= useState(null)
+  const [currentFilms, setCurrentFilms] = useState([]);
+  const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
+  const [currentDate, setCurrentDate] = useState(null);
+  const [isClicked, setIsClicked] = useState(false)
+  console.log(dates)
+  console.log(currentFilms);
   return (
-    <Row className="align-items-center">
+    <Row className="align-items-center flex-wrap" xs={1}>
       <Col>
         <CalendarWrapper>
           <StyledCalendarTitle>Calendar</StyledCalendarTitle>
@@ -23,14 +28,15 @@ const Calendar = ({ dates, onShow, handlerSelectCurrentTime }) => {
               <StyledCol key={`${el}_${index}`}>{el}</StyledCol>
             ))}
           </Row>
+
           <Row>
             {dates.map((el, ind) => (
               <StyledCol
                 className={currentDate === el.date ? "active" : ""}
                 border="true"
-
                 onClick={() => {
-                  setCurrentDateSessions(el.sessions);
+                  console.log(el.films);
+                  setCurrentFilms(el.films);
                   setCurrentDate(el.date);
                 }}
                 key={`${el}_${ind}`}
@@ -41,10 +47,33 @@ const Calendar = ({ dates, onShow, handlerSelectCurrentTime }) => {
           </Row>
         </CalendarWrapper>
       </Col>
+      <CardGroup>
+        {currentFilms.map((el, index) => (
+          <Card
+            onClick={() => {
+              setCurrentFilmSessions(el.sessions);
+              setIsClicked(true);
+            }}
+            key={`${el}__${index}`}
+          >
+            <Card.Img variant="top" src={el.poster} />
+            <Card.Body>
+              <Card.Title>{el.name}</Card.Title>
+              <Card.Text>{el.description}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </CardGroup>
       <Col>
-        <StyledCalendarTitle>Sessions</StyledCalendarTitle>
+        <StyledCalendarTitle
+          className={classNames({
+            disabled: !isClicked,
+          })}
+        >
+          Sessions
+        </StyledCalendarTitle>
         <FlexUl className="d-flex mx-auto">
-          {currentDateSessions.map((item, index) => {
+          {currentFilmSessions.map((item, index) => {
             const time = Object.keys(item);
             const [activeSit] = Object.entries(item);
             return (
@@ -64,4 +93,4 @@ const Calendar = ({ dates, onShow, handlerSelectCurrentTime }) => {
   );
 }
 
-export default Calendar;
+export default Body;

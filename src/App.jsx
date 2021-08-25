@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 
-import { Title, Calendar,Popup } from "./components";
+import { Body, Popup, Header } from "./components";
 import { AppWrapper } from "./styled/AppWrapper";
 
 const App = () => {
@@ -10,27 +10,25 @@ const App = () => {
   const [currentTime, setCurrentTime] = useState( [] );
   
   useEffect(() => {
-    fetch("https://demo5115615.mockable.io/test")
+    fetch("https://demo5115615.mockable.io/dbnew")
       .then((resp) => resp.json())
-      .then(json => {
-        setDates(json.dates);  
+      .then((json) => {
+        setDates(json.dates);
       });
   }, [])
-
+  console.log(dates)
   const handlerSelectCurrentTime = (item) => {
     setCurrentTime(item)
   }
   return (
     <AppWrapper>
       <Container>
-        <div className="d-flex border-bottom border-1 border-white justify-content-center">
-          <Title> Booking Tickets </Title>
-        </div>
-            <Calendar
-              dates={dates}
-              handlerSelectCurrentTime={handlerSelectCurrentTime}
-              onShow={() => setModalShow(true)}
-            />
+        <Header className="d-flex border-bottom border-1 border-white justify-content-center" />
+        <Body
+          dates={dates}
+          handlerSelectCurrentTime={handlerSelectCurrentTime}
+          onShow={() => setModalShow(true)}
+        />
         <Popup
           time={currentTime}
           show={modalShow}
