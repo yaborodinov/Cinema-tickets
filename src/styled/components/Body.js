@@ -43,3 +43,11 @@ export const CalendarWrapper = styled('div')`
   margin-right: auto;
   padding: 30px 0;
 `;
+
+export const FlexUl = styled('ul')
+`
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 250px;
+  min-width: 200px;
+`;

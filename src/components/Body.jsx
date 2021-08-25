@@ -2,12 +2,13 @@ import React,{useState} from "react";
 import { Row, Col, CardGroup, Card } from "react-bootstrap";
 import classNames from "classnames";
 
-import { Time, FlexUl } from "./index";
+import { Time } from "./index";
 
 import {
   StyledCalendarTitle,
   StyledCol,
   CalendarWrapper,
+  FlexUl,
 } from "../styled/components/Body";
 
 const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
