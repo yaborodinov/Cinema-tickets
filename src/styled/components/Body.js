@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
-import { Col } from 'react-bootstrap'
+import {
+  Col,
+  CardGroup,
+  Card
+} from 'react-bootstrap'
 
 export const StyledCalendarTitle = styled('h3')`
   display: block;
@@ -44,10 +48,30 @@ export const CalendarWrapper = styled('div')`
   padding: 30px 0;
 `;
 
-export const FlexUl = styled('ul')
-`
+export const FlexUl = styled('ul')`
   flex-wrap: wrap;
   justify-content: space-between;
   max-width: 250px;
   min-width: 200px;
 `;
+
+
+
+//  Card
+
+
+export const StyledCardImg = styled('img')`
+  display: block;
+  height: auto;
+  width: 100%;
+  
+`
+
+
+export const StyledCard = styled(Card)`
+  border: none;
+  margin: 0 10px;
+   @media (max-width: 768px) {
+    margin: 30px 0;
+  }
+`

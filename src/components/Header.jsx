@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Title } from "./index"
+import { Title } from './index'
 
 const Header = () => <Title> Booking Tickets </Title>
 

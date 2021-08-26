@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
 
-import { Body, Popup, Header } from "./components";
-import { AppWrapper } from "./styled/AppWrapper";
+import { Body, Popup, Header } from './components';
+import { AppWrapper } from './styled/AppWrapper';
 
 const App = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -10,13 +10,12 @@ const App = () => {
   const [currentTime, setCurrentTime] = useState( [] );
   
   useEffect(() => {
-    fetch("https://demo5115615.mockable.io/dbnew")
+    fetch('https://demo5115615.mockable.io/dbnew')
       .then((resp) => resp.json())
       .then((json) => {
         setDates(json.dates);
       });
   }, [])
-  console.log(dates)
   const handlerSelectCurrentTime = (item) => {
     setCurrentTime(item)
   }
