@@ -3,8 +3,13 @@ import { Col } from 'react-bootstrap'
 
 const StyledPoster = styled(Col)`
   margin: 30px 20px;
+  padding: 12px;
+  &.active{
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px -2px ${props => props.theme.colors.yellow};
+  }
   &:hover{
-    cursor:pointer;
+    cursor: pointer;
   }
   img{
     height: auto;

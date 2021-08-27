@@ -7,7 +7,7 @@ const Time = ({ time, onShow, activeSit, handlerSelectCurrentTime }) => <StyledT
         handlerSelectCurrentTime(activeSit);
         onShow();
       }}
-      background="#cbafff"
+      
     >
       {time}
     </StyledTime>

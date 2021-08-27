@@ -24,6 +24,8 @@ export const theme = {
     violet: '#6d53c6',
     yellow: '#feef5c',
     backgroundViolet: '#aa85ee',
+    backgroundVioletLighter: '#cbafff',
+
     disabled: '#ccc',
   },
   transition: {
