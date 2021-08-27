@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
-import { Modal, Row, Col } from "react-bootstrap";
-import classNames from "classnames";
+import React, {useState, useEffect} from 'react';
+import { Modal, Row, Col } from 'react-bootstrap';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { StyledButton, StyledSit, StyledHeader } from "../../styled/components/popup/StyledPopup";
+import { StyledButton, StyledSit, StyledHeader } from '../../styled/components/popup/StyledPopup';
 
-import ScreenImg from "../../images/cinemaScreen.png";
+import ScreenImg from '../../images/cinemaScreen.png';
 
 const Popup = (props) => {
   const info = {
@@ -16,24 +16,25 @@ const Popup = (props) => {
   const [currentPopup, setCurrentPopup] = useState(info);
 
   useEffect(() => {
-    const setLocalPopup = async() => {
+    const setLocalPopup = async () => {
       if (info.time) {
-       await localStorage.setItem("info", JSON.stringify(info))
-      } else {
-        return
-     }
-    }
-    const getLocalPopup = async () => {
-      const temp = await localStorage.getItem("info")
-      if (JSON.parse(temp)) {
-         setCurrentPopup(JSON.parse(temp));
+        await localStorage.setItem("info", JSON.stringify(info));
       } else {
         return;
       }
-    }
+    };
+    const getLocalPopup = async () => {
+      const temp = await localStorage.getItem("info");
+      if (JSON.parse(temp)) {
+        setCurrentPopup(JSON.parse(temp));
+      } else {
+        return;
+      }
+    };
     setLocalPopup();
     getLocalPopup();
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Modal
       {...props}

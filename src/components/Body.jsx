@@ -17,9 +17,8 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
   const [currentFilms, setCurrentFilms] = useState([]);
   const [currentFilm, setCurrentFilm] = useState(null)
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
-  const [currentDate, setCurrentDate] = useState(null);
+  const [currentDate, setCurrentDate] = useState(1);
   const [isClicked, setIsClicked] = useState(false)
-  console.log(currentFilm);
   return (
     <Row className="align-items-center flex-wrap" xs={1}>
       <Col>
@@ -33,7 +32,7 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
                 ))}
               </Row>
               <Row>
-                {dates.map((el, ind) => (
+                {(dates || currentDate).map((el, ind) => (
                   <StyledCol
                     className={currentDate === el.date ? "active" : ""}
                     border="true"
@@ -69,7 +68,7 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
                       margin="10px"
                       time={time}
                       onShow={onShow}
-                      />
+                    />
                   </Link>
                 );
               })}
