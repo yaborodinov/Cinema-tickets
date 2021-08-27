@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
-
+import { Link } from 'react-router-dom';
+ 
 import { Time, Poster } from './index';
 
 import {
@@ -61,14 +62,15 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
                 const time = Object.keys(item);
                 const [activeSit] = Object.entries(item);
                 return (
-                  <Time
-                    activeSit={activeSit}
-                    handlerSelectCurrentTime={handlerSelectCurrentTime}
-                    key={`${item}_${index}`}
-                    margin="10px"
-                    time={time}
-                    onShow={onShow}
-                  />
+                  <Link to="/popup" key={`${item}_${index}`}>
+                    <Time
+                      activeSit={activeSit}
+                      handlerSelectCurrentTime={handlerSelectCurrentTime}
+                      margin="10px"
+                      time={time}
+                      onShow={onShow}
+                      />
+                  </Link>
                 );
               })}
             </FlexUl>
@@ -79,7 +81,7 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
         <Row className="justify-content-around">
           {currentFilms.map((el, index) => (
             <Poster
-              active={currentFilm=== index? "active": ""}
+              active={currentFilm === index ? "active" : ""}
               item={el}
               handPosterleClick={() => {
                 setCurrentFilm(index);

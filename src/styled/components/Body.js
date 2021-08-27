@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import {
   Col,
-  CardGroup,
   Card
 } from 'react-bootstrap'
 
@@ -55,10 +54,7 @@ export const FlexUl = styled('ul')`
   min-width: 200px;
 `;
 
-
-
 //  Card
-
 
 export const StyledCardImg = styled('img')`
   display: block;
@@ -66,7 +62,6 @@ export const StyledCardImg = styled('img')`
   width: 100%;
   
 `
-
 
 export const StyledCard = styled(Card)`
   border: none;
