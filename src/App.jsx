@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { Route } from "react-router-dom";
+import { Route } from 'react-router-dom';
 
 import { Body, Popup, Header, Test } from './components';
 import { AppWrapper } from './styled/AppWrapper';
+
+import {pullData} from './api'
 
 const App = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -11,15 +13,10 @@ const App = () => {
   const [currentTime, setCurrentTime] = useState( [] );
 
   useEffect(() => {
-    fetch('https://demo5115615.mockable.io/dbnew')
-      .then((resp) => resp.json())
-      .then((json) => {
-        setDates(json.dates);
-      });
-    
+    pullData(setDates);
     const url = new URL(window.location.href);
     if (url.pathname === '/popup') {
-        setModalShow(true);
+      setModalShow(true);
     } 
   }, [])
 
@@ -40,7 +37,7 @@ const App = () => {
           <Popup
             time={currentTime}
             show={modalShow}
-            onShow={()=>setModalShow(true)}
+            onShow={() => setModalShow(true)}
             onHide={() => setModalShow(false)}
           />
         </Route>
