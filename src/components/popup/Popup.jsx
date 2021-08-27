@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 import { StyledButton, StyledSit, StyledHeader } from '../../styled/components/popup/StyledPopup';
 
-import ScreenImg from '../../images/cinemaScreen.png';
-
 const Popup = (props) => {
   const info = {
     time: props.time[0],
@@ -48,7 +46,11 @@ const Popup = (props) => {
         </Modal.Title>
       </StyledHeader>
       <Modal.Body className="d-flex flex-column justify-content-center">
-        <img className="w-75 mx-auto" src={ScreenImg} alt="#" />
+        <img
+          className="w-75 mx-auto"
+          src="/images/cinemaScreen.png"
+          alt="cinema"
+        />
         <Row className="w-75 mx-auto" xs={6}>
           {currentPopup.activeSit.map((el, index) => (
             <Col
