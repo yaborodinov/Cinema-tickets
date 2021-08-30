@@ -4,14 +4,36 @@ import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 
 export const StyledHeader = styled(Modal.Header)`
-  .btn-close{
+  position: relative;
+`
+
+export const StyledCloseButton = styled('button')`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  outline: none;
+  background: none;
+  width: 20px;
+  height: 20px;
+  &:before{
+    content: "";
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: ${props=>props.theme.colors.violet};
     position: absolute;
-    right: 12px;
-    margin: 0;
-    &:focus{
-      box-shadow: none;
-    }
-  }
+    transform: rotate(45deg) translateX(-3px) translateY(2px);
+  };
+  &:after{
+    content: "";
+    display: block;
+    width: 26px;
+    height: 2px; 
+    background-color: ${props=>props.theme.colors.violet};
+    position: absolute;
+    transform: rotate(-45deg) translateX(-2px) translateY(-3px);
+  };
 `
 
 export const StyledButton = styled(Button)`

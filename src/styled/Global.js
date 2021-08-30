@@ -14,6 +14,12 @@ export const Global = createGlobalStyle `
 ul,ol,li{
   list-style: none;
   padding-left: 0;
+};
+a,
+a:hover,
+a:active{
+  text-decoration: none;
+  color: inherit;
 }
 `
 

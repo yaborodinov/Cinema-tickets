@@ -3,7 +3,12 @@ import { Modal, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { StyledButton, StyledSit, StyledHeader } from '../../styled/components/popup/StyledPopup';
+import {
+  StyledButton,
+  StyledSit,
+  StyledHeader,
+  StyledCloseButton,
+} from '../../styled/components/popup/StyledPopup';
 
 const Popup = (props) => {
   const info = {
@@ -16,13 +21,13 @@ const Popup = (props) => {
   useEffect(() => {
     const setLocalPopup = async () => {
       if (info.time) {
-        await localStorage.setItem("info", JSON.stringify(info));
+        await localStorage.setItem('info', JSON.stringify(info));
       } else {
         return;
       }
     };
     const getLocalPopup = async () => {
-      const temp = await localStorage.getItem("info");
+      const temp = await localStorage.getItem('info');
       if (JSON.parse(temp)) {
         setCurrentPopup(JSON.parse(temp));
       } else {
@@ -40,9 +45,12 @@ const Popup = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <StyledHeader closeButton className="border-0">
+      <StyledHeader className="border-0">
         <Modal.Title id="contained-modal-title-vcenter" className="mx-auto">
           {`Choose your favourite sits at ${currentPopup.time}`}
+          <Link to="/">
+            <StyledCloseButton></StyledCloseButton>
+          </Link>
         </Modal.Title>
       </StyledHeader>
       <Modal.Body className="d-flex flex-column justify-content-center">
@@ -54,7 +62,7 @@ const Popup = (props) => {
         <Row className="w-75 mx-auto" xs={6}>
           {currentPopup.activeSit.map((el, index) => (
             <Col
-              className="d-flex justify-content-center mt-2"
+              className="d-flex justify-content-center mt-2 px-1"
               key={`${el}_${index}`}
             >
               <StyledSit
