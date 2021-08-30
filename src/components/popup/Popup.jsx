@@ -71,7 +71,7 @@ const Popup = (props) => {
         </Row>
       </Modal.Body>
       <Modal.Footer className="border-0">
-        <Link to="">
+        <Link to="/">
           <StyledButton variant="outline-primary">Reserve</StyledButton>
         </Link>
       </Modal.Footer>

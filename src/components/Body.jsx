@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
  
 import { Time, Poster } from './index';
 
@@ -82,7 +83,7 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
             <Poster
               active={currentFilm === index ? "active" : ""}
               item={el}
-              handPosterleClick={() => {
+              handlerPosterleClick={() => {
                 setCurrentFilm(index);
                 setCurrentFilmSessions(el.sessions);
                 setIsClicked(true);
@@ -94,6 +95,16 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
       </Col>
     </Row>
   );
+}
+
+Body.propTypes = {
+  dates: PropTypes.array.isRequired,
+  onShow: PropTypes.func.isRequired,
+  handlerSelectCurrentTime: PropTypes.func.isRequired
+};
+
+Body.defaultProps = {
+  dates: []
 }
 
 export default Body;

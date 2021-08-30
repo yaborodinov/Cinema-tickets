@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
 
-import { Body, Popup, Header, Test } from './components';
+import { Body, Popup, Header } from './components';
 import { AppWrapper } from './styled/AppWrapper';
 
 import {pullData} from './api'
@@ -40,9 +40,6 @@ const App = () => {
             onShow={() => setModalShow(true)}
             onHide={() => setModalShow(false)}
           />
-        </Route>
-        <Route path="/test" exact>
-          <Test/>
         </Route>
       </Container>
     </AppWrapper>

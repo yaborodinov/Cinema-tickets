@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { StyledTime } from '../styled/components/Time';
 
@@ -7,9 +8,15 @@ const Time = ({ time, onShow, activeSit, handlerSelectCurrentTime }) =><StyledTi
           handlerSelectCurrentTime(activeSit);
           onShow();
         }}
-        
       >
-        {time}
+      {time}
     </StyledTime>
+
+Time.propTypes = {
+  time: PropTypes.array.isRequired,
+  onShow: PropTypes.func.isRequired,
+  activeSit: PropTypes.array.isRequired,
+  handlerSelectCurrentTime: PropTypes.func.isRequired,
+};
 
 export default Time;
