@@ -9,7 +9,7 @@ const Time = ({ time, onShow, activeSit, handlerSelectCurrentTime }) =><StyledTi
           onShow();
         }}
       >
-      {time}
+        {time}
     </StyledTime>
 
 Time.propTypes = {

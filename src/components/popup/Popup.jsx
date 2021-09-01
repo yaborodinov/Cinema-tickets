@@ -9,6 +9,8 @@ import {
   StyledHeader,
   StyledCloseButton,
 } from '../../styled/components/popup/StyledPopup';
+import { useDispatch, useSelector } from 'react-redux';
+// import { actionReserve } from "../../redux/store";
 
 const Popup = (props) => {
   const info = {
@@ -17,6 +19,12 @@ const Popup = (props) => {
   };
   const [choosenSit, setChoosenSit] = useState(null);
   const [currentPopup, setCurrentPopup] = useState(info);
+  const dispatch = useDispatch();
+  const state = useSelector(state=>state);
+  const handleSelectItem = () => {
+    // const temp = state.findIndex(e=>e.date === state.current.data)
+    // dispatch(actionReserve())
+  }
 
   useEffect(() => {
     const setLocalPopup = async () => {
@@ -80,11 +88,16 @@ const Popup = (props) => {
       </Modal.Body>
       <Modal.Footer className="border-0">
         <Link to="/">
-          <StyledButton variant="outline-primary">Reserve</StyledButton>
+          <StyledButton
+            variant="outline-primary"
+            onClick={() => handleSelectItem()}
+          >
+            Reserve
+          </StyledButton>
         </Link>
       </Modal.Footer>
     </Modal>
   );
 }
 
-export default Popup
+export default Popup;

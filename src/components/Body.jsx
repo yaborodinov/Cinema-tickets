@@ -2,9 +2,12 @@ import React,{useState} from 'react';
 import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
  
 import { Time, Poster } from './index';
+import { actionSetCurrentItem } from '../redux/store';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   StyledCalendarTitle,
@@ -13,13 +16,16 @@ import {
   FlexUl,
 } from '../styled/components/Body';
 
-const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
+const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const [currentFilms, setCurrentFilms] = useState([]);
-  const [currentFilm, setCurrentFilm] = useState(null)
+  const [currentFilm, setCurrentFilm] = useState(null);
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
   const [currentDate, setCurrentDate] = useState(1);
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
+  const dispatch = useDispatch();
+  const data = useSelector(state => state);
+
   return (
     <Row className="align-items-center flex-wrap" xs={1}>
       <Col>
@@ -33,13 +39,14 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
                 ))}
               </Row>
               <Row>
-                {(dates || currentDate).map((el, ind) => (
+                {(data.dates || currentDate).map((el, ind) => (
                   <StyledCol
                     className={currentDate === el.date ? "active" : ""}
                     border="true"
                     onClick={() => {
                       setCurrentFilms(el.films);
                       setCurrentDate(el.date);
+                      dispatch(actionSetCurrentItem(el.date));
                     }}
                     key={`${el}_${ind}`}
                   >
@@ -61,6 +68,7 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
               {currentFilmSessions.map((item, index) => {
                 const time = Object.keys(item);
                 const [activeSit] = Object.entries(item);
+                console.log(currentFilmSessions);
                 return (
                   <Link to="/popup" key={`${item}_${index}`}>
                     <Time
@@ -80,6 +88,7 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
       <Col className="flex-column flex-md-row">
         <Row className="justify-content-around">
           {currentFilms.map((el, index) => (
+            
             <Poster
               active={currentFilm === index ? "active" : ""}
               item={el}
@@ -95,7 +104,7 @@ const Body = ({ dates, onShow, handlerSelectCurrentTime }) => {
       </Col>
     </Row>
   );
-}
+};
 
 Body.propTypes = {
   dates: PropTypes.array.isRequired,
@@ -105,6 +114,6 @@ Body.propTypes = {
 
 Body.defaultProps = {
   dates: []
-}
+};
 
 export default Body;
