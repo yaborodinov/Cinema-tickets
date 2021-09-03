@@ -20,17 +20,17 @@ const App = () => {
     dispatch(getApiData(response.data));
   };
 
-  const url = new URL(window.location.href);
-  if (url.pathname === '/popup') {
-    setModalShow(true);
-  };
-  
   const handlerSelectCurrentTime = (item) => {
     setCurrentTime(item)
   };
   
   useEffect(() => {
     getData(urlGetData);
+
+    const url = new URL(window.location.href);
+    if (url.pathname === '/popup') {
+    setModalShow(true);
+  };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
