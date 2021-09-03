@@ -12,10 +12,8 @@ import {getApiData} from "./redux/store"
 
 const App = () => {
   const [modalShow, setModalShow] = useState(false);
-  const [dates, setDates] = useState( [] );
   const [currentTime, setCurrentTime] = useState( [] );
   const dispatch = useDispatch()
-  console.log(currentTime);
   useEffect(() => {
     // axios
     //   .get("https://demo5115615.mockable.io/dbnew")
@@ -29,9 +27,9 @@ const App = () => {
       setModalShow(true);
     }
     getData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(dates);
   const handlerSelectCurrentTime = (item) => {
     setCurrentTime(item)
   }

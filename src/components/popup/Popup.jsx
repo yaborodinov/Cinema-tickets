@@ -9,10 +9,11 @@ import {
   StyledHeader,
   StyledCloseButton,
 } from '../../styled/components/popup/StyledPopup';
-import { useDispatch, useSelector } from 'react-redux';
-// import { actionReserve } from "../../redux/store";
+import {useDispatch,  useSelector } from 'react-redux';
+
 
 const Popup = (props) => {
+  console.log(props)
   const info = {
     time: props.time[0],
     activeSit: props.time[1] ? Object.values(props.time[1]) : [] ,
@@ -20,12 +21,19 @@ const Popup = (props) => {
   const [choosenSit, setChoosenSit] = useState(null);
   const [currentPopup, setCurrentPopup] = useState(info);
   const dispatch = useDispatch();
-  const state = useSelector(state=>state);
+  const state = useSelector(state => state);
+  
   const handleSelectItem = () => {
-    // const temp = state.findIndex(e=>e.date === state.current.data)
-    // dispatch(actionReserve())
-  }
+    let tempState = state;
+    const temp = state.dates.findIndex(e => e.date === state.currentDay);
+    const currentFilm = state.dates[temp].films.find((el) => el.name === state.currentFilm);
+    const currentFilmIndex = state.dates[temp].films.findIndex((el) => el.name === state.currentFilm);
+    const currentSessionIndex = currentFilm.sessions.findIndex((el) => el[info.time]);
 
+    console.log(tempState);
+
+  }
+console.log(state);
   useEffect(() => {
     const setLocalPopup = async () => {
       if (info.time) {

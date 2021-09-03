@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
  
 import { Time, Poster } from './index';
-import { actionSetCurrentItem } from '../redux/store';
+import { actionSetCurrentDay, actionCurrentFilm } from "../redux/store";
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,7 +25,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [isClicked, setIsClicked] = useState(false);
   const dispatch = useDispatch();
   const data = useSelector(state => state);
-
+console.log(currentFilms);
   return (
     <Row className="align-items-center flex-wrap" xs={1}>
       <Col>
@@ -46,7 +46,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
                     onClick={() => {
                       setCurrentFilms(el.films);
                       setCurrentDate(el.date);
-                      dispatch(actionSetCurrentItem(el.date));
+                      dispatch(actionSetCurrentDay(el.date));
                     }}
                     key={`${el}_${ind}`}
                   >
@@ -68,7 +68,6 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
               {currentFilmSessions.map((item, index) => {
                 const time = Object.keys(item);
                 const [activeSit] = Object.entries(item);
-                console.log(currentFilmSessions);
                 return (
                   <Link to="/popup" key={`${item}_${index}`}>
                     <Time
@@ -90,14 +89,19 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
           {currentFilms.map((el, index) => (
             
             <Poster
-              active={currentFilm === index ? "active" : ""}
+              active={currentFilm?.index === index ? "active" : ""}
               item={el}
               handlerPosterleClick={() => {
-                setCurrentFilm(index);
+                setCurrentFilm({
+                  index:index,
+                  name: el.name
+                });
                 setCurrentFilmSessions(el.sessions);
                 setIsClicked(true);
+                dispatch(actionCurrentFilm(el.name));
               }}
               key={`${el}__${index}`}
+              
             />
           ))}
         </Row>

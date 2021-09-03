@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { compose, createStore } from 'redux';
 
 const initialState = {
   'date': 1,
@@ -151,16 +151,22 @@ export const getApiData = (data) => {
   }
 }
 
-export const actionSetCurrentItem = (item) => {
+export const actionSetCurrentDay = (day) => {
    return {
-     type: 'SET_CURRENT_ITEM',
-     item
+     type: 'SET_CURRENT_DAY',
+     day
    }
 }
 export const actionReserve = (item) => {
    return {
      type: 'SET_CURRENT_SIT',
      item
+   }
+}
+export const actionCurrentFilm = (film) => {
+   return {
+     type: 'SET_CURRENT_FILM',
+     film
    }
 }
 
@@ -170,10 +176,15 @@ const reducer = (state = initialState,action) => {
       return {
         ...action.data
       }
-    case 'SET_CURRENT_ITEM':
+    case 'SET_CURRENT_DAY':
       return {
         ...state,
-        currentItem: action.item
+        currentDay: action.day
+      }
+    case 'SET_CURRENT_FILM':
+      return {
+        ...state,
+        currentFilm: action.film
       }
     case 'SET_CURRENT_SIT':
       return {
@@ -184,6 +195,6 @@ const reducer = (state = initialState,action) => {
   }
 }
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducer, compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 export default store;
