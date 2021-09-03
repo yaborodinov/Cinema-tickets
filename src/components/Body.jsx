@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
  
 import { Time, Poster } from './index';
 import {
@@ -13,7 +14,6 @@ import {
 } from '../styled/components/Body';
 
 import { actionSetCurrentDay, actionCurrentFilm } from '../redux/store';
-import { useDispatch, useSelector } from 'react-redux';
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -99,7 +99,6 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
                 dispatch(actionCurrentFilm(el.name));
               }}
               key={`${el}__${index}`}
-              
             />
           ))}
         </Row>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap';
 
 const StyledPoster = styled(Col)`
   margin: 30px 20px;
@@ -20,6 +20,6 @@ const StyledPoster = styled(Col)`
     color: ${props => props.theme.colors.primary};
     text-align: center;
   }
-`
+`;
 
 export default StyledPoster;

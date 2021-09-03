@@ -1,12 +1,9 @@
 import styled, { css } from 'styled-components';
-import {
-  Col,
-  Card
-} from 'react-bootstrap'
+import { Col } from 'react-bootstrap';
 
 export const StyledCalendarTitle = styled('h3')`
   display: block;
-  color: ${props=>props.color || props.theme.colors.primary};
+  color: ${props => props.color || props.theme.colors.primary};
   margin: 20px 0;
   text-align: center;
   font-size: 18px;
@@ -14,7 +11,7 @@ export const StyledCalendarTitle = styled('h3')`
   &.disabled{
     display: none;
   }
-`
+`;
 
 export const StyledCol = styled(Col)`
   text-align:center;
@@ -60,13 +57,4 @@ export const StyledCardImg = styled('img')`
   display: block;
   height: auto;
   width: 100%;
-  
-`
-
-export const StyledCard = styled(Card)`
-  border: none;
-  margin: 0 10px;
-   @media (max-width: 768px) {
-    margin: 30px 0;
-  }
-`
+`;

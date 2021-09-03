@@ -10,9 +10,6 @@ import { Global, theme } from './styled/Global';
 
 import store from './redux/store';
 
-
-
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>

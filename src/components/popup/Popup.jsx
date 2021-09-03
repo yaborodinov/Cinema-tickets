@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Modal, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   StyledButton,
@@ -10,11 +11,9 @@ import {
   StyledCloseButton,
 } from '../../styled/components/popup/StyledPopup';
 
-import { useDispatch,  useSelector } from 'react-redux';
 import { actionReserve } from '../../redux/store';
 
 const Popup = (props) => {
-  console.log(props)
   const info = {
     time: props.time[0],
     activeSit: props.time[1] ? Object.values(props.time[1]) : [] ,
@@ -37,23 +36,25 @@ const Popup = (props) => {
 
     dispatch(actionReserve(tempState));
   }
+
+  const setLocalPopup = async () => {
+    if (info.time) {
+      await localStorage.setItem('info', JSON.stringify(info));
+    } else {
+      return;
+    }
+  };
+  
+  const getLocalPopup = async () => {
+    const temp = await localStorage.getItem('info');
+    if (JSON.parse(temp)) {
+      setCurrentPopup(JSON.parse(temp));
+    } else {
+      return;
+    }
+  };
 console.log(state);
   useEffect(() => {
-    const setLocalPopup = async () => {
-      if (info.time) {
-        await localStorage.setItem('info', JSON.stringify(info));
-      } else {
-        return;
-      }
-    };
-    const getLocalPopup = async () => {
-      const temp = await localStorage.getItem('info');
-      if (JSON.parse(temp)) {
-        setCurrentPopup(JSON.parse(temp));
-      } else {
-        return;
-      }
-    };
     setLocalPopup();
     getLocalPopup();
   // eslint-disable-next-line react-hooks/exhaustive-deps

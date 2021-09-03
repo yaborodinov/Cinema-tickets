@@ -15,22 +15,24 @@ const App = () => {
   const urlGetData = 'https://demo5115615.mockable.io/dbnew';
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getData = async (url) => {
-      const response = await axios.get(url)
-      dispatch(getApiData(response.data));
-    }
-    const url = new URL(window.location.href);
-    if (url.pathname === '/popup') {
-      setModalShow(true);
-    }
-    getData(urlGetData);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const getData = async (url) => {
+    const response = await axios.get(url)
+    dispatch(getApiData(response.data));
+  };
 
+  const url = new URL(window.location.href);
+  if (url.pathname === '/popup') {
+    setModalShow(true);
+  };
+  
   const handlerSelectCurrentTime = (item) => {
     setCurrentTime(item)
-  }
+  };
+  
+  useEffect(() => {
+    getData(urlGetData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AppWrapper>
@@ -51,6 +53,6 @@ const App = () => {
       </Container>
     </AppWrapper>
   );
-}
+};
 
 export default App;
