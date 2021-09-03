@@ -9,8 +9,9 @@ import {
   StyledHeader,
   StyledCloseButton,
 } from '../../styled/components/popup/StyledPopup';
-import {useDispatch,  useSelector } from 'react-redux';
 
+import { useDispatch,  useSelector } from 'react-redux';
+import { actionReserve } from '../../redux/store';
 
 const Popup = (props) => {
   console.log(props)
@@ -22,16 +23,19 @@ const Popup = (props) => {
   const [currentPopup, setCurrentPopup] = useState(info);
   const dispatch = useDispatch();
   const state = useSelector(state => state);
-  
+
   const handleSelectItem = () => {
     let tempState = state;
     const temp = state.dates.findIndex(e => e.date === state.currentDay);
     const currentFilm = state.dates[temp].films.find((el) => el.name === state.currentFilm);
     const currentFilmIndex = state.dates[temp].films.findIndex((el) => el.name === state.currentFilm);
     const currentSessionIndex = currentFilm.sessions.findIndex((el) => el[info.time]);
+    let currentSessionTime = currentFilm.sessions[currentSessionIndex][info.time];
 
-    console.log(tempState);
+    currentSessionTime[choosenSit + 1] = !currentSessionTime[choosenSit + 1];
+    tempState.dates[temp].films[currentFilmIndex].sessions[currentSessionIndex][info.time] = currentSessionTime;
 
+    dispatch(actionReserve(tempState));
   }
 console.log(state);
   useEffect(() => {

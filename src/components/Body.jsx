@@ -5,16 +5,15 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
  
 import { Time, Poster } from './index';
-import { actionSetCurrentDay, actionCurrentFilm } from "../redux/store";
-
-import { useDispatch, useSelector } from 'react-redux';
-
 import {
   StyledCalendarTitle,
   StyledCol,
   CalendarWrapper,
   FlexUl,
 } from '../styled/components/Body';
+
+import { actionSetCurrentDay, actionCurrentFilm } from '../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -23,9 +22,9 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
   const [currentDate, setCurrentDate] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
-  const dispatch = useDispatch();
   const data = useSelector(state => state);
-console.log(currentFilms);
+
+  const dispatch = useDispatch();
   return (
     <Row className="align-items-center flex-wrap" xs={1}>
       <Col>
@@ -87,7 +86,6 @@ console.log(currentFilms);
       <Col className="flex-column flex-md-row">
         <Row className="justify-content-around">
           {currentFilms.map((el, index) => (
-            
             <Poster
               active={currentFilm?.index === index ? "active" : ""}
               item={el}
