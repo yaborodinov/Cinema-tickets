@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 
 import { Body, Popup, Header } from './components';
 import { AppWrapper } from './styled/AppWrapper';
+import PostForm from "./components/PostForm"
+import Posts from "./components/Posts";
+import FetchedPosts from "./components/FetchedPosts";
 
 import { getApiData } from './redux/store';
 
@@ -37,6 +40,21 @@ const App = () => {
   return (
     <AppWrapper>
       <Container>
+        <Row>
+          <Col>
+            <PostForm/>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Синхронные посты</h2>
+            <Posts posts={[1,2,3] }/>
+          </Col>
+          <Col>
+            <h2>Асинхронные посты</h2>
+            <FetchedPosts posts={ []}/>
+          </Col>
+        </Row>
         <Header />
         <Body
           handlerSelectCurrentTime={handlerSelectCurrentTime}
