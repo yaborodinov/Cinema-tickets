@@ -11,7 +11,7 @@ import {
   StyledCloseButton,
 } from '../../styled/components/popup/StyledPopup';
 
-import { actionReserve } from '../../redux/store';
+import { actionReserve } from '../../redux/actions/actionReserve';
 
 const Popup = (props) => {
   const info = {
@@ -21,7 +21,7 @@ const Popup = (props) => {
   const [choosenSit, setChoosenSit] = useState(null);
   const [currentPopup, setCurrentPopup] = useState(info);
   const dispatch = useDispatch();
-  const state = useSelector(state => state);
+  const state = useSelector(state => state.reducer);
 
   const handleSelectItem = () => {
     let tempState = state;

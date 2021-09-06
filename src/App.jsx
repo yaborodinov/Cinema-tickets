@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux';
 
 import { Body, Popup, Header } from './components';
 import { AppWrapper } from './styled/AppWrapper';
-import PostForm from "./components/PostForm"
+import PostForm from './components/PostForm';
 import Posts from "./components/Posts";
 import FetchedPosts from "./components/FetchedPosts";
 
-import { getApiData } from './redux/store';
+import { getApiData } from './redux/actions/getApiData';
 
 const App = () => {
   const [modalShow, setModalShow] = useState(false);

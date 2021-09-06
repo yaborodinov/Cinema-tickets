@@ -13,7 +13,8 @@ import {
   FlexUl,
 } from '../styled/components/Body';
 
-import { actionSetCurrentDay, actionCurrentFilm } from '../redux/store';
+import { actionSetCurrentDay } from '../redux/actions/actionSetCurrentDay';
+import {actionCurrentFilm}from '../redux/actions/actionCurrentFilm'
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -22,7 +23,8 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
   const [currentDate, setCurrentDate] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
-  const data = useSelector(state => state);
+  const data = useSelector(state => state.reducer);
+  console.log(data)
 
   const dispatch = useDispatch();
   return (

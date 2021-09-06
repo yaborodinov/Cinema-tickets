@@ -1,22 +1,29 @@
 import React, { useState } from 'react'
 import { Form, Button } from "react-bootstrap";
+import { useDispatch } from 'react-redux';
+import { actionPost } from '../redux/actions/actionPost';
 
-function PostForm(props) {
-  const [title, setTitle] = useState("rth");
-  console.log(title);
+function PostForm() {
+  const [title, setTitle] = useState('');
   const inputHandler = (event) => {
     setTitle(event.target.value);
   }
-  
   const submitHandler = (e) => {
     e.preventDefault()
     const titlePost = { title }
+    
     const newPost = {
       title: titlePost.title,
       id: Date.now().toString()
     };
-    setTitle("")
+    if (!title.trim()) {
+      return
+    }
+    dispatch(actionPost(newPost))
+    setTitle('')
   }
+
+  const dispatch = useDispatch();
   
   return (
     <Form onSubmit={submitHandler}>
@@ -29,7 +36,11 @@ function PostForm(props) {
           onChange={inputHandler}
         />
       </Form.Group>
-      <Button className="btn btn-success" type="submit">
+      <Button
+        className="btn btn-success"
+        type="submit"
+        
+      >
         Создать
       </Button>
     </Form>
