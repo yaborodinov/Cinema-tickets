@@ -53,7 +53,6 @@ const Popup = (props) => {
       return;
     }
   };
-console.log(state);
   useEffect(() => {
     setLocalPopup();
     getLocalPopup();
