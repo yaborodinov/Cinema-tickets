@@ -37,22 +37,25 @@ export const hideAlert = () => {
 
 
 export const fetchPosts = () => {
+   return {
+     type: "REQUEST_POSTS"
 
-  return async dispatch => {
-    try {
-      dispatch(showLoader())
-    const response = await fetch('htps://jsonplaceholder.typicode.com/posts?_limit=5');
-    const json = await response.json()
-    dispatch({
-      type: 'FETCH_POSTS',
-      payload: json
-    })
-    dispatch(hideLoader())
-    } catch (e) {
-      dispatch(showAlert("чтото пошло не так"))
-      dispatch(hideLoader())
-    }
+   }
+  // return async dispatch => {
+  //   try {
+  //     dispatch(showLoader())
+  //   const response = await fetch('htps://jsonplaceholder.typicode.com/posts?_limit=5');
+  //   const json = await response.json()
+  //   dispatch({
+  //     type: 'FETCH_POSTS',
+  //     payload: json
+  //   })
+  //   dispatch(hideLoader())
+  //   } catch (e) {
+  //     dispatch(showAlert("чтото пошло не так"))
+  //     dispatch(hideLoader())
+  //   }
     
-  }
+  // }
 
 }
