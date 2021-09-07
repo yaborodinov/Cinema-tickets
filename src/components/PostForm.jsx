@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from 'react-redux';
-import { actionPost } from '../redux/actions/actionPost';
+import { createPost } from "../redux/actions/actionCreatePost";
 
 function PostForm() {
   const [title, setTitle] = useState('');
@@ -19,7 +19,7 @@ function PostForm() {
     if (!title.trim()) {
       return
     }
-    dispatch(actionPost(newPost))
+    dispatch(createPost(newPost));
     setTitle('')
   }
 

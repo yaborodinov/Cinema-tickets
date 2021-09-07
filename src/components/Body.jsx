@@ -24,7 +24,6 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [currentDate, setCurrentDate] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
   const data = useSelector(state => state.reducer);
-  console.log(data)
 
   const dispatch = useDispatch();
   return (

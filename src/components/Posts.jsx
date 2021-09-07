@@ -7,14 +7,14 @@ import Post from './Post'
 
 function Posts() {
   const statePosts = useSelector(state => state.postsReducer)
-  console.log(statePosts.posts)
+  
   
   if (!statePosts.posts.length) {
     return <p className="text-center">Постов пока нет</p>;
   
   } else {  
-      return statePosts.posts.map((el, index) => (
-        <Post post={el} key={el.id} />
+      return statePosts.posts.map((el) => (
+        <Post title={el.title} key={el.id} />
       ));
   }
   
