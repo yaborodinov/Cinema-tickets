@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from 'react-redux';
-import { createPost } from "../redux/actions/actionCreatePost";
+import { useDispatch } from "react-redux";
+import { createPost, showAlert } from "../redux/actions/actionCreatePost";
 
 function PostForm() {
   const [title, setTitle] = useState('');
@@ -17,12 +17,12 @@ function PostForm() {
       id: Date.now().toString()
     };
     if (!title.trim()) {
-      return
+      return dispatch(showAlert("вы ничего не ввели"));
     }
     dispatch(createPost(newPost));
     setTitle('')
   }
-
+  
   const dispatch = useDispatch();
   
   return (
@@ -39,7 +39,6 @@ function PostForm() {
       <Button
         className="btn btn-success"
         type="submit"
-        
       >
         Создать
       </Button>

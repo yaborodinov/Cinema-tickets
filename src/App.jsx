@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
-import { Body, Popup, Header } from './components';
+import { Body, Popup, Header,AlertMessage } from './components';
 import { AppWrapper } from './styled/AppWrapper';
 import PostForm from './components/PostForm';
 import Posts from "./components/Posts";
@@ -26,6 +26,8 @@ const App = () => {
   const handlerSelectCurrentTime = (item) => {
     setCurrentTime(item)
   };
+  const alert = useSelector((state) => state.appReducer.alert);
+  const alertText = useSelector((state) => state.appReducer.text);
   
   useEffect(() => {
     getData(urlGetData);
@@ -40,19 +42,20 @@ const App = () => {
   return (
     <AppWrapper>
       <Container>
+        {alert && <AlertMessage variant={"danger"} text={alertText} />}
         <Row>
           <Col>
-            <PostForm/>
+            <PostForm />
           </Col>
         </Row>
         <Row>
           <Col>
             <h2>Синхронные посты</h2>
-            <Posts posts={[1,2,3]}/>
+            <Posts />
           </Col>
           <Col>
             <h2>Асинхронные посты</h2>
-            <FetchedPosts posts={ []}/>
+            <FetchedPosts />
           </Col>
         </Row>
         <Header />
