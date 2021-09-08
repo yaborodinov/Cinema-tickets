@@ -31,13 +31,15 @@ export const theme = {
     yellow: '#feef5c',
     backgroundViolet: '#aa85ee',
     backgroundVioletLighter: '#cbafff',
-
-    disabled: '#ccc',
+    disabled: '#ccc'
   },
   transition: {
-    transition: 'all 0.2s linear',
+    transition: 'all 0.2s linear'
   },
   media: {
     medium: "768px"
+  },
+  fontSize: {
+    medium: "24px"
   }
 };
