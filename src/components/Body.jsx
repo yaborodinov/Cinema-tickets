@@ -14,7 +14,7 @@ import {
 } from '../styled/components/Body';
 import StyledButton from '../styled/components/StyledButton';
 
-import { actionSetCurrentDay, actionCurrentFilm, getData } from '../redux/store';
+import { actionSetCurrentDay, actionCurrentFilm, getData } from '../redux/reducers/reducer';
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -23,7 +23,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
   const [currentDate, setCurrentDate] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
-  const data = useSelector(state => state);
+  const data = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
   return (
     <>

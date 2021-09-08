@@ -6,6 +6,6 @@ export const showLoader = () => {
 
 export const hideLoader = () => {
   return {
-    type: 'SHOW_LOADER',
+    type: 'HIDE_LOADER',
   }
 }

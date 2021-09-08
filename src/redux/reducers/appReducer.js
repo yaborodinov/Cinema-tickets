@@ -1,5 +1,5 @@
 const initialState = {
-  loading:true
+  loading: false
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -7,12 +7,12 @@ export const appReducer = (state = initialState, action) => {
     case 'SHOW_LOADER':
       return {
         ...state,
-        loading:true
+        loading: true
       }
     case 'HIDE_LOADER':
       return {
         ...state,
-        loading:false
+        loading: false
       }
     default:
       return state
