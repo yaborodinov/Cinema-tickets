@@ -5,6 +5,10 @@ import { Modal } from 'react-bootstrap';
 
 export const StyledHeader = styled(Modal.Header)`
   position: relative;
+  .modal-title {
+    min-width: 85%;
+    max-width: 85%;
+  }
 `;
 
 export const StyledCloseButton = styled('button')`
@@ -17,7 +21,7 @@ export const StyledCloseButton = styled('button')`
   width: 20px;
   height: 20px;
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 26px;
     height: 2px;
@@ -26,7 +30,7 @@ export const StyledCloseButton = styled('button')`
     transform: rotate(45deg) translateX(-3px) translateY(2px);
   };
   &:after {
-    content: "";
+    content: '';
     display: block;
     width: 26px;
     height: 2px; 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { StyledTime } from '../styled/components/Time';
+import { StyledTime } from '../styled/components/StyledTime';
 
 const Time = ({ time, onShow, activeSit, handlerSelectCurrentTime }) => (
   <StyledTime

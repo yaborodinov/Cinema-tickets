@@ -33,13 +33,25 @@ export const theme = {
     backgroundVioletLighter: '#cbafff',
     disabled: '#ccc'
   },
+  borders: {
+    borderViolet: '#aa85ee'
+  },
+  boxShadows: {
+    boxShadowViolet: '0px 0px 15px 4px #9363eb'
+  },
   transition: {
     transition: 'all 0.2s linear'
   },
   media: {
-    medium: '768px'
+    small: '576px',
+    medium: '768px',
+    large: '992px',
+    extraLarge: '1200px'
   },
   fontSize: {
-    medium: '24px'
+    small: '14px',
+    medium: '18px',
+    large: '24px',
+    extraLarge: '30px'
   }
 };

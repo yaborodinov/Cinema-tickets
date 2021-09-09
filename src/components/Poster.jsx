@@ -12,7 +12,7 @@ const Poster = ({ item, handlerPosterleClick, active }) => {
       onClick={handlerPosterleClick}
     >
       <img src={item.poster} alt={item.name} />
-      <h2 className="mt-3">{item.name}</h2>
+      <h2 className="mt-3 h3">{item.name}</h2>
     </StyledPoster>
   );
 };

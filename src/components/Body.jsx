@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Time, Poster, Loader } from './index';
 import {
   StyledCalendarTitle,
-  StyledCol,
+  StyledCalendarCol,
   CalendarWrapper,
   FlexUl,
-} from '../styled/components/Body';
+} from '../styled/components/StyledBody';
 import StyledButton from '../styled/components/StyledButton';
 
 import {
@@ -63,15 +63,17 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
                 <StyledCalendarTitle>Calendar</StyledCalendarTitle>
                 <Row className="mb-1 border-bottom border-white">
                   {weekDays.map((el, index) => (
-                    <StyledCol key={`${el}_${index}`}>{el}</StyledCol>
+                    <StyledCalendarCol key={`${el}_${index}`}>
+                      {el}
+                    </StyledCalendarCol>
                   ))}
                 </Row>
                 <Row>
-                  {loading ? <Loader/> : ""}
+                  {loading ? <Loader /> : ""}
                   {(data.dates || currentDate).map((el, ind) => (
-                    <StyledCol
-                      className={currentDate === el.date ? "active" : ""}
-                      border="true"
+                    <StyledCalendarCol
+                      className={currentDate === el.date ? "active" : ''}
+                      border='true'
                       onClick={() => {
                         setCurrentFilms(el.films);
                         setCurrentDate(el.date);
@@ -80,7 +82,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
                       key={`${el}_${ind}`}
                     >
                       {el.date}
-                    </StyledCol>
+                    </StyledCalendarCol>
                   ))}
                 </Row>
               </CalendarWrapper>
