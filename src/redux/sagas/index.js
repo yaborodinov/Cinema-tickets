@@ -2,15 +2,15 @@ import { takeEvery, put, call } from 'redux-saga/effects';
 
 import { fetchData } from '../../api';
 import { hideLoader, showLoader } from '../actions/actionLoader';
+import { GET_DATA, REQUEST_DATA } from '../types';
 
 export function* sagaWatcher() {
-  yield takeEvery('REQUEST_DATA', sagaWorker)
+  yield takeEvery(REQUEST_DATA, sagaWorker)
 }
 
 function* sagaWorker() {
   yield put(showLoader())
   const payload = yield call(fetchData)
-  yield put({ type: 'GET_DATA', payload })
+  yield put({ type: GET_DATA, payload })
   yield put(hideLoader())
 }
-

@@ -18,7 +18,7 @@ import {
   actionSetCurrentDay,
   actionCurrentFilm,
   getData
-} from '../redux/reducers/datarReducer';
+} from '../redux/reducers/dataReducer';
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -27,10 +27,10 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
   const [currentDate, setCurrentDate] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
-  const data = useSelector((state) => state.dataReducer);
+  const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
-  const loading = useSelector((state) => state.loaderReducer.loading);
+  const loading = useSelector((state) => state.loader.loading);
   
   const dispatchCurrentFilm=(el,index)=>{
     setCurrentFilm({
@@ -69,10 +69,10 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
                   ))}
                 </Row>
                 <Row>
-                  {loading ? <Loader /> : ""}
+                  {loading ? <Loader /> : ''}
                   {(data.dates || currentDate).map((el, ind) => (
                     <StyledCalendarCol
-                      className={currentDate === el.date ? "active" : ''}
+                      className={currentDate === el.date ? 'active' : ''}
                       border='true'
                       onClick={() => {
                         setCurrentFilms(el.films);
@@ -119,7 +119,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
           <Row className="justify-content-around">
             {currentFilms.map((el, index) => (
               <Poster
-                active={currentFilm?.index === index ? "active" : ""}
+                active={currentFilm?.index === index ? 'active' : ''}
                 item={el}
                 handlerPosterleClick={() => dispatchCurrentFilm(el, index)}
                 key={`${el}__${index}`}
