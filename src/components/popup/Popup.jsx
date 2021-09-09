@@ -10,7 +10,7 @@ import {
   StyledHeader,
   StyledCloseButton,
 } from '../../styled/components/popup/StyledPopup';
-import { actionReserve } from '../../redux/reducers/reducer';
+import { actionReserve } from '../../redux/reducers/datarReducer';
 
 
 const Popup = (props) => {
@@ -21,7 +21,7 @@ const Popup = (props) => {
   const [choosenSit, setChoosenSit] = useState(null);
   const [currentPopup, setCurrentPopup] = useState(info);
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.reducer);
+  const state = useSelector((state) => state.dataReducer);
 
   const handleSelectItem = () => {
     let tempState = state;

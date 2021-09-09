@@ -18,7 +18,7 @@ import {
   actionSetCurrentDay,
   actionCurrentFilm,
   getData
-} from '../redux/reducers/reducer';
+} from '../redux/reducers/datarReducer';
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -27,10 +27,10 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
   const [currentDate, setCurrentDate] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
-  const data = useSelector((state) => state.reducer);
+  const data = useSelector((state) => state.dataReducer);
   const dispatch = useDispatch();
 
-  const loading = useSelector((state) => state.appReducer.loading);
+  const loading = useSelector((state) => state.loaderReducer.loading);
   
   const dispatchCurrentFilm=(el,index)=>{
     setCurrentFilm({

@@ -1,5 +1,3 @@
-import { hideLoader, showLoader } from '../actions/actionLoader';
-
 const initialState = {
   'date': 1,
   'dates': [],
@@ -9,22 +7,8 @@ const initialState = {
 }
 
 export const getData = () => {
-  return async dispatch => {
-    dispatch(showLoader())
-    const response = await fetch('https://demo5115615.mockable.io/dbnew');
-    const json = await response.json()
-    dispatch({
-      type: 'GET_DATA',
-      payload: json
-    })
-    dispatch(hideLoader());
-  }
-}
-
-export const getApiData = (data) => {
   return {
-    type: 'GET_API_DATA',
-    data
+    type: 'REQUEST_DATA'
   }
 }
 
@@ -51,10 +35,6 @@ export const actionCurrentFilm = (film) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_API_DATA':
-      return {
-        ...action.data
-      }
       case 'GET_DATA':
         return {
           ...action.payload

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import reducer from './reducer';
+import dataReducer from './datarReducer';
 
-import { appReducer } from './appReducer';
+import { loaderReducer } from './loaderReducer';
 
 export const rootReducer = combineReducers({
-  reducer: reducer,
-  appReducer: appReducer
+  dataReducer: dataReducer,
+  loaderReducer: loaderReducer
 })
