@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Button } from "react-bootstrap";
+import styled from 'styled-components';
+import { Button } from 'react-bootstrap';
 
  const StyledButton = styled(Button)`
   font-size: ${props=>props.theme.fontSize.medium};
 `
 
-export default StyledButton
+export default StyledButton;

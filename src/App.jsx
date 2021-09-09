@@ -29,7 +29,7 @@ const App = () => {
           handlerSelectCurrentTime={handlerSelectCurrentTime}
           onShow={() => setModalShow(true)}
         />
-        <Route path="/popup" exact>
+        <Route path='/popup' exact>
           <Popup
             time={currentTime}
             show={modalShow}

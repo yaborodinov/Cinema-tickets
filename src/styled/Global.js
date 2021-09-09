@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle`
-  *{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,13 +11,13 @@ export const Global = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   };
-  ul,ol,li{
+  ul,ol,li {
     list-style: none;
     padding-left: 0;
   };
   a,
   a:hover,
-  a:active{
+  a:active {
     text-decoration: none;
     color: inherit;
   }
@@ -37,9 +37,9 @@ export const theme = {
     transition: 'all 0.2s linear'
   },
   media: {
-    medium: "768px"
+    medium: '768px'
   },
   fontSize: {
-    medium: "24px"
+    medium: '24px'
   }
 };

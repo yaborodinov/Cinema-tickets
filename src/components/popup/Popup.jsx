@@ -16,7 +16,7 @@ import { actionReserve } from '../../redux/reducers/reducer';
 const Popup = (props) => {
   const info = {
     time: props.time[0],
-    activeSit: props.time[1] ? Object.values(props.time[1]) : [] ,
+    activeSit: props.time[1] ? Object.values(props.time[1]) : [],
   };
   const [choosenSit, setChoosenSit] = useState(null);
   const [currentPopup, setCurrentPopup] = useState(info);
@@ -40,17 +40,13 @@ const Popup = (props) => {
   const setLocalPopup = async () => {
     if (info.time) {
       await localStorage.setItem('info', JSON.stringify(info));
-    } else {
-      return;
-    }
+    } 
   };
   
   const getLocalPopup = async () => {
     const temp = await localStorage.getItem('info');
     if (JSON.parse(temp)) {
       setCurrentPopup(JSON.parse(temp));
-    } else {
-      return;
     }
   };
   useEffect(() => {

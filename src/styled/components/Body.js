@@ -8,7 +8,7 @@ export const StyledCalendarTitle = styled('h3')`
   text-align: center;
   font-size: 18px;
   
-  &.disabled{
+  &.disabled {
     display: none;
   }
 `;
@@ -21,16 +21,16 @@ export const StyledCol = styled(Col)`
   transition: ${props => props.theme.transition.transition};
   ${props => props.border && css`
     border: 1px dashed transparent;
-    &:hover{
+    &:hover {
       border: 1px dashed ${props=>props.theme.colors.yellow};
     };
   `};
-  &.active{
+  &.active {
     border: 1px dashed ${props => props.theme.colors.yellow};
     color:${props => props.theme.colors.yellow};
   }
   
-  &:hover{
+  &:hover {
     cursor: pointer;
     color: ${props => props.theme.colors.yellow};
   }

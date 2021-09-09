@@ -1,6 +1,4 @@
-import { hideLoader, showLoader } from "../actions/actionLoader";
-
-
+import { hideLoader, showLoader } from '../actions/actionLoader';
 
 const initialState = {
   'date': 1,
@@ -19,10 +17,9 @@ export const getData = () => {
       type: 'GET_DATA',
       payload: json
     })
-    dispatch(hideLoader())
+    dispatch(hideLoader());
   }
 }
-
 
 export const getApiData = (data) => {
   return {

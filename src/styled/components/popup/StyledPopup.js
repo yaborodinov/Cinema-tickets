@@ -16,7 +16,7 @@ export const StyledCloseButton = styled('button')`
   background: none;
   width: 20px;
   height: 20px;
-  &:before{
+  &:before {
     content: "";
     display: block;
     width: 26px;
@@ -25,7 +25,7 @@ export const StyledCloseButton = styled('button')`
     position: absolute;
     transform: rotate(45deg) translateX(-3px) translateY(2px);
   };
-  &:after{
+  &:after {
     content: "";
     display: block;
     width: 26px;
@@ -41,7 +41,7 @@ export const StyledButton = styled(Button)`
   color: ${props => props.theme.colors.violet};
   background-color: ${props => props.theme.colors.primary};
   transition: ${props => props.theme.transition.transition};
-  &:hover{
+  &:hover {
     background-color: ${props => props.theme.colors.violet};
     color: ${props => props.theme.colors.primary};
     border-color: ${props => props.theme.colors.violet};
@@ -58,7 +58,7 @@ export const StyledSit = styled('div')`
   border-radius: 0 0 10px 10px;
   color: ${props => props.theme.colors.secondary};
   transition: ${props => props.theme.transition.transition};
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: ${props => props.theme.colors.violet};
     color: ${props => props.theme.colors.primary};
@@ -69,7 +69,7 @@ export const StyledSit = styled('div')`
     border: 1px solid ${props => props.theme.colors.secondary};
     pointer-events: none;
   };
-  &.active{
+  &.active {
     background-color: ${props => props.theme.colors.violet};
     color: ${props => props.theme.colors.primary};
   }

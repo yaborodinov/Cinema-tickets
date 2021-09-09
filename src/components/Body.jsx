@@ -25,11 +25,22 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const [isClicked, setIsClicked] = useState(false);
   const data = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
+
+  
+  const dispatchCurrentFilm=(el,index)=>{
+    setCurrentFilm({
+    index: index,
+    name: el.name,
+  });
+  setCurrentFilmSessions(el.sessions);
+  setIsClicked(true);
+  dispatch(actionCurrentFilm(el.name));}
+                
   return (
     <>
       <div className="d-grid gap-2">
         <StyledButton
-          variant="primary"
+          variant="warning"
           size="lg"
           className="mt-4 mb-4"
           onClick={() => dispatch(getData())}
@@ -99,17 +110,9 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
           <Row className="justify-content-around">
             {currentFilms.map((el, index) => (
               <Poster
-                active={currentFilm?.index === index ? "active" : ""}
+                active={currentFilm?.index === index ? 'active' : ''}
                 item={el}
-                handlerPosterleClick={() => {
-                  setCurrentFilm({
-                    index: index,
-                    name: el.name,
-                  });
-                  setCurrentFilmSessions(el.sessions);
-                  setIsClicked(true);
-                  dispatch(actionCurrentFilm(el.name));
-                }}
+                handlerPosterleClick={() => dispatchCurrentFilm(el, index)}
                 key={`${el}__${index}`}
               />
             ))}

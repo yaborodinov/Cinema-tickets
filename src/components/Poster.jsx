@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import StyledPoster from '../styled/components/StyledPoster'
+import StyledPoster from '../styled/components/StyledPoster';
 
 const Poster = ({ item, handlerPosterleClick, active }) => {
   return (
