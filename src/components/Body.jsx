@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
  
-import { Time, Poster } from './index';
+import { Time, Poster, Loader } from './index';
 import {
   StyledCalendarTitle,
   StyledCol,
@@ -14,7 +14,11 @@ import {
 } from '../styled/components/Body';
 import StyledButton from '../styled/components/StyledButton';
 
-import { actionSetCurrentDay, actionCurrentFilm, getData } from '../redux/reducers/reducer';
+import {
+  actionSetCurrentDay,
+  actionCurrentFilm,
+  getData
+} from '../redux/reducers/reducer';
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -26,15 +30,17 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const data = useSelector((state) => state.reducer);
   const dispatch = useDispatch();
 
+  const loading = useSelector((state) => state.appReducer.loading);
   
   const dispatchCurrentFilm=(el,index)=>{
     setCurrentFilm({
-    index: index,
-    name: el.name,
-  });
-  setCurrentFilmSessions(el.sessions);
-  setIsClicked(true);
-  dispatch(actionCurrentFilm(el.name));}
+      index: index,
+      name: el.name,
+    });
+    setCurrentFilmSessions(el.sessions);
+    setIsClicked(true);
+    dispatch(actionCurrentFilm(el.name));
+  }
                 
   return (
     <>
@@ -61,6 +67,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
                   ))}
                 </Row>
                 <Row>
+                  {loading ? <Loader/> : ""}
                   {(data.dates || currentDate).map((el, ind) => (
                     <StyledCol
                       className={currentDate === el.date ? "active" : ""}
@@ -110,7 +117,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
           <Row className="justify-content-around">
             {currentFilms.map((el, index) => (
               <Poster
-                active={currentFilm?.index === index ? 'active' : ''}
+                active={currentFilm?.index === index ? "active" : ""}
                 item={el}
                 handlerPosterleClick={() => dispatchCurrentFilm(el, index)}
                 key={`${el}__${index}`}
