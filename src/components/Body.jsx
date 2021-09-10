@@ -14,11 +14,7 @@ import {
 } from '../styled/components/StyledBody';
 import StyledButton from '../styled/components/StyledButton';
 
-import {
-  actionSetCurrentDay,
-  actionCurrentFilm,
-  getData
-} from '../redux/reducers/dataReducer';
+import { getData, actionSetCurrentDay, actionCurrentFilm } from "../redux/ducks/data";
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

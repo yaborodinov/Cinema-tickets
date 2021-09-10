@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import dataReducer from './dataReducer';
 
-import { loaderReducer } from './loaderReducer';
+import dataReducer from '../ducks/data';
+import { loaderReducer } from '../ducks/loader';
 
 export const rootReducer = combineReducers({
   data: dataReducer,

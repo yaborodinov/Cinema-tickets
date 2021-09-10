@@ -1,8 +1,8 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 
 import { fetchData } from '../../api';
-import { hideLoader, showLoader } from '../actions/actionLoader';
-import { GET_DATA, REQUEST_DATA } from '../types';
+import { hideLoader, showLoader } from '../ducks/loader';
+import { GET_DATA, REQUEST_DATA } from '../ducks/data';
 
 export function* sagaWatcher() {
   yield takeEvery(REQUEST_DATA, sagaWorker)

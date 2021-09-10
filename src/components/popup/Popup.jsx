@@ -10,7 +10,7 @@ import {
   StyledHeader,
   StyledCloseButton,
 } from '../../styled/components/popup/StyledPopup';
-import { actionReserve } from '../../redux/reducers/dataReducer';
+import { actionReserve } from '../../redux//ducks/data';
 
 
 const Popup = (props) => {
