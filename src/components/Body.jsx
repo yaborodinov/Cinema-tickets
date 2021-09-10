@@ -14,7 +14,7 @@ import {
 } from '../styled/components/StyledBody';
 import StyledButton from '../styled/components/StyledButton';
 
-import { getData, actionSetCurrentDay, actionCurrentFilm } from "../redux/ducks/data";
+import { fetchData, actionSetCurrentDay, actionCurrentFilm } from "../redux/ducks/data";
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -45,7 +45,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
           variant="warning"
           size="lg"
           className="mt-4 mb-4"
-          onClick={() => dispatch(getData())}
+          onClick={() => dispatch(fetchData())}
         >
           To tickets
         </StyledButton>
@@ -65,11 +65,11 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
                   ))}
                 </Row>
                 <Row>
-                  {loading ? <Loader /> : ''}
+                  {loading ? <Loader /> : ""}
                   {(data.dates || currentDate).map((el, ind) => (
                     <StyledCalendarCol
-                      className={currentDate === el.date ? 'active' : ''}
-                      border='true'
+                      className={currentDate === el.date ? "active" : ""}
+                      border="true"
                       onClick={() => {
                         setCurrentFilms(el.films);
                         setCurrentDate(el.date);
@@ -115,7 +115,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
           <Row className="justify-content-around">
             {currentFilms.map((el, index) => (
               <Poster
-                active={currentFilm?.index === index ? 'active' : ''}
+                active={currentFilm?.index === index ? "active" : ""}
                 item={el}
                 handlerPosterleClick={() => dispatchCurrentFilm(el, index)}
                 key={`${el}__${index}`}

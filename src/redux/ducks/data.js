@@ -16,7 +16,7 @@ const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DATA:
       return {
-        ...action.payload
+        ...action.data
       }
       case SET_CURRENT_DAY:
         return {
@@ -37,9 +37,16 @@ const dataReducer = (state = initialState, action) => {
   }
 }
 
-export const getData = () => {
+export const fetchData = () => {
   return {
     type: REQUEST_DATA
+  }
+}
+
+export const getData = (data) => {
+  return {
+    type: GET_DATA,
+    data
   }
 }
 
