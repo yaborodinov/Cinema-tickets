@@ -64,7 +64,7 @@ const Popup = (props) => {
       <StyledHeader className="border-0">
         <Modal.Title id="contained-modal-title-vcenter" className="mx-auto">
           {`Choose your favourite sits at ${currentPopup.time}`}
-          <Link to="/">
+          <Link to='/'>
             <StyledCloseButton></StyledCloseButton>
           </Link>
         </Modal.Title>

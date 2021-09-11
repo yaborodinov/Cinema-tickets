@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{ useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ import {
 } from '../styled/components/StyledBody';
 import StyledButton from '../styled/components/StyledButton';
 
-import { fetchData, actionSetCurrentDay, actionCurrentFilm } from "../redux/ducks/data";
+import { fetchData, actionSetCurrentDay, actionCurrentFilm } from '../redux/ducks/data';
 
 const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -28,10 +28,10 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
 
   const loading = useSelector((state) => state.loader.loading);
   
-  const dispatchCurrentFilm=(el,index)=>{
+  const dispatchCurrentFilm=(el, index)=>{
     setCurrentFilm({
       index: index,
-      name: el.name,
+      name: el.name
     });
     setCurrentFilmSessions(el.sessions);
     setIsClicked(true);
@@ -115,7 +115,7 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
           <Row className="justify-content-around">
             {currentFilms.map((el, index) => (
               <Poster
-                active={currentFilm?.index === index ? "active" : ""}
+                active={currentFilm?.index === index ? 'active' : ''}
                 item={el}
                 handlerPosterleClick={() => dispatchCurrentFilm(el, index)}
                 key={`${el}__${index}`}

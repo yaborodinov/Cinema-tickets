@@ -56,7 +56,7 @@ export const StyledSit = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
-  width:30px;
+  width: 30px;
   height: 30px;
   border: 1px solid ${props => props.theme.colors.violet};
   border-radius: 0 0 10px 10px;

@@ -17,7 +17,7 @@ export const StyledCalendarCol = styled(Col)`
   font-size: ${props=>props.theme.fontSize.small};
   padding-left: 0;
   padding-right: 0;
-  text-align:center;
+  text-align: center;
   width: 14.285714%;
   flex: 0 0 auto;
   color: ${props => props.color || props.theme.colors.primary};
@@ -30,7 +30,7 @@ export const StyledCalendarCol = styled(Col)`
   `};
   &.active {
     border: 1px dashed ${props => props.theme.colors.yellow};
-    color:${props => props.theme.colors.yellow};
+    color: ${props => props.theme.colors.yellow};
   }
   
   &:hover {
