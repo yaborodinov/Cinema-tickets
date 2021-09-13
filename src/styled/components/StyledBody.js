@@ -6,7 +6,7 @@ export const StyledCalendarTitle = styled('h3')`
   color: ${props => props.color || props.theme.colors.primary};
   margin: 20px 0;
   text-align: center;
-  font-size: ${props=>props.theme.fontSize.medium};
+  font-size: ${props => props.theme.fontSize.medium};
   
   &.disabled {
     display: none;
@@ -14,7 +14,7 @@ export const StyledCalendarTitle = styled('h3')`
 `;
 
 export const StyledCalendarCol = styled(Col)`
-  font-size: ${props=>props.theme.fontSize.small};
+  font-size: ${props => props.theme.fontSize.small};
   padding-left: 0;
   padding-right: 0;
   text-align: center;
@@ -25,7 +25,7 @@ export const StyledCalendarCol = styled(Col)`
   ${props => props.border && css`
     border: 1px dashed transparent;
     &:hover {
-      border: 1px dashed ${props=>props.theme.colors.yellow};
+      border: 1px dashed ${props => props.theme.colors.yellow};
     };
   `};
   &.active {
@@ -38,7 +38,7 @@ export const StyledCalendarCol = styled(Col)`
     color: ${props => props.theme.colors.yellow};
   }
   @media(min-width: ${props => props.theme.media.small}) {
-    font-size: ${props=>props.theme.fontSize.medium};
+    font-size: ${props => props.theme.fontSize.medium};
   }
 `;
 

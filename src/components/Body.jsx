@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,6 @@ import {
   CalendarWrapper,
   FlexUl,
 } from '../styled/components/StyledBody';
-import StyledButton from '../styled/components/StyledButton';
 
 import { fetchData, actionSetCurrentDay, actionCurrentFilm } from '../redux/ducks/data';
 
@@ -27,30 +26,23 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.loader.loading);
+
+  useEffect(() => {
+    dispatch(fetchData())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   
-  const dispatchCurrentFilm=(el, index)=>{
+  const dispatchCurrentFilm = (film, index) => {
     setCurrentFilm({
       index: index,
-      name: el.name
+      name: film.name
     });
-    setCurrentFilmSessions(el.sessions);
+    setCurrentFilmSessions(film.sessions);
     setIsClicked(true);
-    dispatch(actionCurrentFilm(el.name));
+    dispatch(actionCurrentFilm(film.name));
   }
                 
   return (
-    <>
-      <div className="d-grid gap-2">
-        <StyledButton
-          variant="warning"
-          size="lg"
-          className="mt-4 mb-4"
-          onClick={() => dispatch(fetchData())}
-        >
-          To tickets
-        </StyledButton>
-      </div>
-
       <Row className="align-items-center flex-wrap" xs={1}>
         <Col>
           <Row>
@@ -58,26 +50,26 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
               <CalendarWrapper>
                 <StyledCalendarTitle>Calendar</StyledCalendarTitle>
                 <Row className="mb-1 border-bottom border-white">
-                  {weekDays.map((el, index) => (
-                    <StyledCalendarCol key={`${el}_${index}`}>
-                      {el}
+                  {weekDays.map((day, index) => (
+                    <StyledCalendarCol key={`${day}_${index}`}>
+                      {day}
                     </StyledCalendarCol>
                   ))}
                 </Row>
                 <Row>
-                  {loading ? <Loader /> : ""}
-                  {(data.dates || currentDate).map((el, ind) => (
+                  {loading ? <Loader /> : ''}
+                  {(data.dates || currentDate).map((element, ind) => (
                     <StyledCalendarCol
-                      className={currentDate === el.date ? "active" : ""}
+                      className={currentDate === element.date ? "active" : ""}
                       border="true"
                       onClick={() => {
-                        setCurrentFilms(el.films);
-                        setCurrentDate(el.date);
-                        dispatch(actionSetCurrentDay(el.date));
+                        setCurrentFilms(element.films);
+                        setCurrentDate(element.date);
+                        dispatch(actionSetCurrentDay(element.date));
                       }}
-                      key={`${el}_${ind}`}
+                      key={`${element}_${ind}`}
                     >
-                      {el.date}
+                      {element.date}
                     </StyledCalendarCol>
                   ))}
                 </Row>
@@ -113,18 +105,17 @@ const Body = ({ onShow, handlerSelectCurrentTime }) => {
         </Col>
         <Col className="flex-column flex-md-row">
           <Row className="justify-content-around">
-            {currentFilms.map((el, index) => (
+            {currentFilms.map((poster, index) => (
               <Poster
                 active={currentFilm?.index === index ? 'active' : ''}
-                item={el}
-                handlerPosterleClick={() => dispatchCurrentFilm(el, index)}
-                key={`${el}__${index}`}
+                item={poster}
+                handlerPosterleClick={() => dispatchCurrentFilm(poster, index)}
+                key={`${poster}__${index}`}
               />
             ))}
           </Row>
         </Col>
       </Row>
-    </>
   );
 };
 

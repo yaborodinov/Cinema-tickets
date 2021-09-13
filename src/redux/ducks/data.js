@@ -18,24 +18,26 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...action.data
       }
-      case SET_CURRENT_DAY:
-        return {
-          ...state,
-          currentDay: action.day
-        }
-        case SET_CURRENT_FILM:
-          return {
-            ...state,
-            currentFilm: action.film
-          }
-          case SET_CURRENT_SIT:
-            return {
-              ...action.item
-            }
-            default:
-              return state
+    case SET_CURRENT_DAY:
+      return {
+        ...state,
+        currentDay: action.day
+      }
+    case SET_CURRENT_FILM:
+      return {
+        ...state,
+        currentFilm: action.film
+      }
+    case SET_CURRENT_SIT:
+      return {
+        ...action.item
+      }
+      default:
+        return state
   }
 }
+
+
 
 export const fetchData = () => {
   return {
