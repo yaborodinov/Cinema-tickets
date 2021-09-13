@@ -9,7 +9,7 @@ const App = () => {
   const [modalShow, setModalShow] = useState(false);
   const [currentTime, setCurrentTime] = useState([]);
   const location = useLocation();
-  const handlerSelectCurrentTime = (item) => {
+  const handleSelectCurrentTime = (item) => {
     setCurrentTime(item)
   };
   
@@ -25,7 +25,7 @@ const App = () => {
       <Container>
         <Header />
         <Body
-          handlerSelectCurrentTime={handlerSelectCurrentTime}
+          onSelectCurrentTime={handleSelectCurrentTime}
           onShow={() => setModalShow(true)}
         />
         <Route path='/popup' exact>

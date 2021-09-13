@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 
 import { StyledTime } from '../styled/components/StyledTime';
 
-const Time = ({ time, onShow, activeSit, handlerSelectCurrentTime }) => (
+const Time = ({ time, activeSit, onShow, onSelectCurrentTime }) => (
   <StyledTime
     onClick={() => {
-      handlerSelectCurrentTime(activeSit);
+      onSelectCurrentTime(activeSit);
       onShow();
     }}
   >
     {time}
   </StyledTime>
-)
+);
 
 Time.propTypes = {
   time: PropTypes.array.isRequired,
   onShow: PropTypes.func.isRequired,
   activeSit: PropTypes.array.isRequired,
-  handlerSelectCurrentTime: PropTypes.func.isRequired,
+  onSelectCurrentTime: PropTypes.func.isRequired,
 };
 
 export default Time;
