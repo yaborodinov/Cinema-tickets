@@ -1,3 +1,8 @@
+import { takeEvery, put, call } from 'redux-saga/effects';
+import { fetchedData } from '../../api';
+import { hideLoader, showLoader } from './loader';
+
+
 export const GET_DATA = 'my-app/data/GET_DATA';
 export const REQUEST_DATA = 'my-app/data/REQUEST_DATA';
 export const SET_CURRENT_DAY = 'my-app/data/SET_CURRENT_DAY';
@@ -71,6 +76,19 @@ export const actionCurrentFilm = (film) => {
     type: SET_CURRENT_FILM,
     film
   }
+}
+
+// saga
+
+export function* sagaWatcher() {
+  yield takeEvery(REQUEST_DATA, sagaWorker)
+}
+
+function* sagaWorker() {
+  yield put(showLoader())
+  const payload = yield call(fetchedData)
+  yield put(getData(payload))
+  yield put(hideLoader())
 }
 
 export default dataReducer;

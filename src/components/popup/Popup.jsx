@@ -26,9 +26,9 @@ const Popup = (props) => {
   const handleSelectItem = () => {
     let tempState = state;
     const temp = state.dates.findIndex(e => e.date === state.currentDay);
-    const currentFilm = state.dates[temp].films.find((el) => el.name === state.currentFilm);
-    const currentFilmIndex = state.dates[temp].films.findIndex((el) => el.name === state.currentFilm);
-    const currentSessionIndex = currentFilm.sessions.findIndex((el) => el[info.time]);
+    const currentFilm = state.dates[temp].films.find((film) => film.name === state.currentFilm);
+    const currentFilmIndex = state.dates[temp].films.findIndex((film) => film.name === state.currentFilm);
+    const currentSessionIndex = currentFilm.sessions.findIndex((session) => session[info.time]);
     let currentSessionTime = currentFilm.sessions[currentSessionIndex][info.time];
 
     currentSessionTime[choosenSit + 1] = !currentSessionTime[choosenSit + 1];
@@ -95,7 +95,7 @@ const Popup = (props) => {
         </Row>
       </Modal.Body>
       <Modal.Footer className="border-0">
-        <Link to="/">
+        <Link to='/'>
           <StyledButton
             variant="outline-primary"
             onClick={() => handleSelectItem()}

@@ -6,8 +6,8 @@ import {
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 
-import { rootReducer } from './reducers/rootReducer';
-import { sagaWatcher } from './sagas';
+import { rootReducer } from './rootReducer';
+import { sagaWatcher } from './ducks/data';
 
 const saga = createSagaMiddleware()
 const store = createStore(rootReducer, compose(applyMiddleware(

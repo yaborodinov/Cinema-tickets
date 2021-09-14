@@ -16,7 +16,7 @@ import {
 import { fetchData, actionSetCurrentDay, actionCurrentFilm } from '../redux/ducks/data';
 
 const Body = ({ onShow, onSelectCurrentTime }) => {
-  const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const [currentFilms, setCurrentFilms] = useState([]);
   const [currentFilm, setCurrentFilm] = useState(null);
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
@@ -43,13 +43,13 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
   };
 
   return (
-    <Row className="align-items-center flex-wrap" xs={1}>
+    <Row className='align-items-center flex-wrap' xs={1}>
       <Col>
         <Row>
           <Col>
             <CalendarWrapper>
               <StyledCalendarTitle>Calendar</StyledCalendarTitle>
-              <Row className="mb-1 border-bottom border-white">
+              <Row className='mb-1 border-bottom border-white'>
                 {weekDays.map((day, index) => (
                   <StyledCalendarCol key={`${day}_${index}`}>
                     {day}
@@ -57,11 +57,11 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
                 ))}
               </Row>
               <Row>
-                {loading ? <Loader /> : ""}
+                {loading ? <Loader /> : ''}
                 {(data.dates || currentDate).map((element, ind) => (
                   <StyledCalendarCol
-                    className={currentDate === element.date ? "active" : ""}
-                    border="true"
+                    className={currentDate === element.date ? 'active' : ''}
+                    border='true'
                     onClick={() => {
                       setCurrentFilms(element.films);
                       setCurrentDate(element.date);
@@ -83,16 +83,16 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
             >
               Sessions
             </StyledCalendarTitle>
-            <FlexUl className="d-flex mx-auto">
+            <FlexUl className='d-flex mx-auto'>
               {currentFilmSessions.map((item, index) => {
                 const time = Object.keys(item);
                 const [activeSit] = Object.entries(item);
                 return (
-                  <Link to="/popup" key={`${item}_${index}`}>
+                  <Link to='/popup' key={`${item}_${index}`}>
                     <Time
                       activeSit={activeSit}
                       onSelectCurrentTime={onSelectCurrentTime}
-                      margin="10px"
+                      margin='10px'
                       time={time}
                       onShow={onShow}
                     />
@@ -107,7 +107,7 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
         <Row className="justify-content-around">
           {currentFilms.map((poster, index) => (
             <Poster
-              active={currentFilm?.index === index ? "active" : ""}
+              active={currentFilm?.index === index ? 'active' : ''}
               item={poster}
               onPosterClick={() => dispatchCurrentFilm(poster, index)}
               key={`${poster}__${index}`}
