@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
@@ -17,14 +17,12 @@ import { fetchData, actionSetCurrentDay, actionCurrentFilm } from '../redux/duck
 
 const Body = ({ onShow, onSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const [currentFilms, setCurrentFilms] = useState([]);
+  const data = useSelector((state) => state.data);
   const [currentFilm, setCurrentFilm] = useState(null);
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
-  const [currentDate, setCurrentDate] = useState(0);
+  const [currentDate, setCurrentDate] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
-  const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
-
   const loading = useSelector((state) => state.loader.loading);
 
   useEffect(() => {
@@ -63,7 +61,6 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
                     className={currentDate === element.date ? 'active' : ''}
                     border='true'
                     onClick={() => {
-                      setCurrentFilms(element.films);
                       setCurrentDate(element.date);
                       dispatch(actionSetCurrentDay(element.date));
                     }}
@@ -105,7 +102,7 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
       </Col>
       <Col className="flex-column flex-md-row">
         <Row className="justify-content-around">
-          {currentFilms.map((poster, index) => (
+          {data.dates[currentDate-1].films.map((poster, index) => (
             <Poster
               active={currentFilm?.index === index ? 'active' : ''}
               item={poster}

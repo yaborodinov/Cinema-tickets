@@ -2,7 +2,6 @@ import { takeEvery, put, call } from 'redux-saga/effects';
 import { fetchedData } from '../../api';
 import { hideLoader, showLoader } from './loader';
 
-
 export const GET_DATA = 'my-app/data/GET_DATA';
 export const REQUEST_DATA = 'my-app/data/REQUEST_DATA';
 export const SET_CURRENT_DAY = 'my-app/data/SET_CURRENT_DAY';
@@ -11,7 +10,12 @@ export const SET_CURRENT_SIT = 'my-app/data/SET_CURRENT_SIT';
 
 const initialState = {
   'date': 1,
-  'dates': [],
+  'dates': [
+    {
+      films: []
+    }
+  ],
+  'currentDay': 1,
   'getData': {
     'dates': []
   }
@@ -41,8 +45,6 @@ const dataReducer = (state = initialState, action) => {
         return state
   }
 }
-
-
 
 export const fetchData = () => {
   return {
