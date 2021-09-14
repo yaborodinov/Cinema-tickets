@@ -4,6 +4,7 @@ import { Col } from 'react-bootstrap';
 const StyledPoster = styled(Col)`
   margin: 30px 20px;
   padding: 12px;
+  transition: ${props => props.theme.transition.transition};
   &.active {
     border-radius: 10px;
     box-shadow: 0px 0px 18px -2px ${props => props.theme.colors.yellow};

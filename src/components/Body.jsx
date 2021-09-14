@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
  
 import { Time, Poster, Loader } from './index';
 import {
-  StyledCalendarTitle,
+  StyledSubTitle,
   StyledCalendarCol,
   CalendarWrapper,
   FlexUl,
 } from '../styled/components/StyledBody';
 
 import { fetchData, actionSetCurrentDay, actionCurrentFilm } from '../redux/ducks/data';
+import { StyledAlert } from '../styled/components/StyledAlert';
 
 const Body = ({ onShow, onSelectCurrentTime }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -41,13 +42,13 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
   };
 
   return (
-    <Row className='align-items-center flex-wrap' xs={1}>
+    <Row className="align-items-center flex-wrap" xs={1}>
       <Col>
         <Row>
           <Col>
             <CalendarWrapper>
-              <StyledCalendarTitle>Calendar</StyledCalendarTitle>
-              <Row className='mb-1 border-bottom border-white'>
+              <StyledSubTitle>Calendar</StyledSubTitle>
+              <Row className="mb-1 border-bottom border-white">
                 {weekDays.map((day, index) => (
                   <StyledCalendarCol key={`${day}_${index}`}>
                     {day}
@@ -55,13 +56,14 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
                 ))}
               </Row>
               <Row>
-                {loading ? <Loader /> : ''}
+                {loading ? <Loader /> : ""}
                 {(data.dates || currentDate).map((element, ind) => (
                   <StyledCalendarCol
-                    className={currentDate === element.date ? 'active' : ''}
-                    border='true'
+                    className={currentDate === element.date ? "active" : ""}
+                    border="true"
                     onClick={() => {
                       setCurrentDate(element.date);
+                      setCurrentFilm(null);
                       dispatch(actionSetCurrentDay(element.date));
                     }}
                     key={`${element}_${ind}`}
@@ -73,38 +75,49 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
             </CalendarWrapper>
           </Col>
           <Col>
-            <StyledCalendarTitle
+            <StyledSubTitle
               className={classNames({
                 disabled: !isClicked,
               })}
             >
               Sessions
-            </StyledCalendarTitle>
-            <FlexUl className='d-flex mx-auto'>
-              {currentFilmSessions.map((item, index) => {
-                const time = Object.keys(item);
-                const [activeSit] = Object.entries(item);
-                return (
-                  <Link to='/popup' key={`${item}_${index}`}>
-                    <Time
-                      activeSit={activeSit}
-                      onSelectCurrentTime={onSelectCurrentTime}
-                      margin='10px'
-                      time={time}
-                      onShow={onShow}
-                    />
-                  </Link>
-                );
-              })}
+            </StyledSubTitle>
+            <FlexUl className="d-flex mx-auto">
+              {currentFilm
+                ? currentFilmSessions.map((item, index) => {
+                    const time = Object.keys(item);
+                    const [activeSit] = Object.entries(item);
+                    return (
+                      <Link to="/popup" key={`${item}_${index}`}>
+                        <Time
+                          activeSit={activeSit}
+                          onSelectCurrentTime={onSelectCurrentTime}
+                          margin="10px"
+                          time={time}
+                          onShow={onShow}
+                        />
+                      </Link>
+                    );
+                  })
+                : ""}
             </FlexUl>
           </Col>
         </Row>
       </Col>
       <Col className="flex-column flex-md-row">
+        <StyledAlert
+          variant="danger"
+          className={classNames({
+            disabled: !data.dates[currentDate - 1].films[0]?.name,
+            transparent: currentFilm,
+          })}
+        >
+          Select the movie to get available sessions
+        </StyledAlert>
         <Row className="justify-content-around">
-          {data.dates[currentDate-1].films.map((poster, index) => (
+          {data.dates[currentDate - 1].films.map((poster, index) => (
             <Poster
-              active={currentFilm?.index === index ? 'active' : ''}
+              active={currentFilm?.index === index ? "active" : ""}
               item={poster}
               onPosterClick={() => dispatchCurrentFilm(poster, index)}
               key={`${poster}__${index}`}

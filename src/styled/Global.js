@@ -40,7 +40,7 @@ export const theme = {
     boxShadowViolet: '0px 0px 15px 4px #9363eb'
   },
   transition: {
-    transition: 'all 0.2s linear'
+    transition: 'all 0.2s ease-out'
   },
   media: {
     small: '576px',

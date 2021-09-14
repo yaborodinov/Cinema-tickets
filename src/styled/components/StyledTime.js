@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledTime = styled.li `
   list-style: none;
   background-color: ${props => props.theme.colors.backgroundViolet};
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 3px 12px;
   color: ${props => props.theme.colors.primary};
   box-shadow: ${props => props.theme.boxShadows.boxShadowViolet};

@@ -1,16 +1,21 @@
 import styled, { css } from 'styled-components';
 import { Col } from 'react-bootstrap';
 
-export const StyledCalendarTitle = styled('h3')`
+export const StyledSubTitle = styled('h3')`
   display: block;
   color: ${props => props.color || props.theme.colors.primary};
   margin: 20px 0;
   text-align: center;
   font-size: ${props => props.theme.fontSize.medium};
-  
   &.disabled {
     display: none;
-  }
+  };
+  &.active {
+    color: ${props => props.color || props.theme.colors.yellow};
+  };
+  &.transparent {
+    color: transparent;
+  };
 `;
 
 export const StyledCalendarCol = styled(Col)`
