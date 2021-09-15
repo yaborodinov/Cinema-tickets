@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { Route, useLocation } from 'react-router-dom';
+import { Route, useLocation, Switch } from "react-router-dom";
 
-import { Body, Popup, Header } from './components';
+import { Body, Popup, Header, Success } from "./components";
 import { AppWrapper } from './styled/AppWrapper';
 
 const App = () => {
@@ -23,12 +23,19 @@ const App = () => {
   return (
     <AppWrapper>
       <Container>
-        <Header />
-        <Body
-          onSelectCurrentTime={handleSelectCurrentTime}
-          onShow={() => setModalShow(true)}
-        />
-        <Route path='/popup' exact>
+        <Switch>
+          <Route path="/success/:currentDay/:film/:sit/:time" exact>
+            <Success />
+          </Route>
+          <Route path="/">
+            <Header />
+            <Body
+              onSelectCurrentTime={handleSelectCurrentTime}
+              onShow={() => setModalShow(true)}
+            />
+          </Route>
+        </Switch>
+        <Route path="/popup" exact>
           <Popup
             time={currentTime}
             show={modalShow}

@@ -22,6 +22,7 @@ const Popup = (props) => {
   const [currentPopup, setCurrentPopup] = useState(info);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.data);
+  const link = `/success/${state.currentDay}/${state.currentFilm}/${choosenSit+1}/${props.time[0]}`;
 
   const handleSelectItem = () => {
     let tempState = state;
@@ -95,7 +96,7 @@ const Popup = (props) => {
         </Row>
       </Modal.Body>
       <Modal.Footer className="border-0">
-        <Link to='/'>
+        <Link to={link}>
           <StyledButton
             variant="outline-primary"
             onClick={() => handleSelectItem()}
