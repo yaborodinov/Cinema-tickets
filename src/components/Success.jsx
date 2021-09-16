@@ -16,7 +16,7 @@ const Success = () => {
             width="20"
             height="20"
             fill="green"
-            class="bi bi-check-circle-fill"
+            className="bi bi-check-circle-fill"
             viewBox="0 0 16 16"
           >
             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75
