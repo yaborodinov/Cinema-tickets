@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { Route, useLocation, Switch } from "react-router-dom";
+import { Route, useLocation, Switch } from 'react-router-dom';
 
-import { Body, Popup, Header, Success } from "./components";
+import { Body, Popup, Header, Success } from './components';
 import { AppWrapper } from './styled/AppWrapper';
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
   };
   
   useEffect(() => {
-    if (location.pathname === "/popup") {
+    if (location.pathname === '/popup') {
       setModalShow(true);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

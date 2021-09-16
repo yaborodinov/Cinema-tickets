@@ -13,7 +13,9 @@ const Poster = ({ item, active, onPosterClick }) => {
 };
 
 Poster.propTypes = {
-  item : PropTypes.object.isRequired
-}
+  item: PropTypes.object.isRequired,
+  active: PropTypes.string.isRequired,
+  onPosterClick: PropTypes.func.isRequired
+};
 
 export default Poster;

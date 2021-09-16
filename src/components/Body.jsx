@@ -56,11 +56,11 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
                 ))}
               </Row>
               <Row>
-                {loading ? <Loader /> : ""}
+                {loading ? <Loader /> : ''}
                 {(data.dates || currentDate).map((element, ind) => (
                   <StyledCalendarCol
-                    className={currentDate === element.date ? "active" : ""}
-                    border="true"
+                    className={currentDate === element.date ? 'active' : ''}
+                    border='true'
                     onClick={() => {
                       setCurrentDate(element.date);
                       setCurrentFilm(null);
@@ -82,24 +82,24 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
             >
               Sessions
             </StyledSubTitle>
-            <FlexUl className="d-flex mx-auto">
+            <FlexUl className='d-flex mx-auto'>
               {currentFilm
                 ? currentFilmSessions.map((item, index) => {
                     const time = Object.keys(item);
                     const [activeSit] = Object.entries(item);
                     return (
-                      <Link to="/popup" key={`${item}_${index}`}>
+                      <Link to='/popup' key={`${item}_${index}`}>
                         <Time
                           activeSit={activeSit}
                           onSelectCurrentTime={onSelectCurrentTime}
-                          margin="10px"
+                          margin='10px'
                           time={time}
                           onShow={onShow}
                         />
                       </Link>
                     );
                   })
-                : ""}
+                : ''}
             </FlexUl>
           </Col>
         </Row>
@@ -117,7 +117,7 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
         <Row className="justify-content-around">
           {data.dates[currentDate - 1].films.map((poster, index) => (
             <Poster
-              active={currentFilm?.index === index ? "active" : ""}
+              active={currentFilm?.index === index ? 'active' : ''}
               item={poster}
               onPosterClick={() => dispatchCurrentFilm(poster, index)}
               key={`${poster}__${index}`}
