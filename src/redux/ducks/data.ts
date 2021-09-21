@@ -8,7 +8,37 @@ export const SET_CURRENT_DAY = 'my-app/data/SET_CURRENT_DAY';
 export const SET_CURRENT_FILM = 'my-app/data/SET_CURRENT_FILM';
 export const SET_CURRENT_SIT = 'my-app/data/SET_CURRENT_SIT';
 
-const initialState = {
+
+type InitialStateType = {
+  'date': number
+  'dates': Array<Object>
+  'currentDay': number
+  'getData': Object
+  'currentFilm': string
+}
+type FetchDataType = {
+  type: typeof REQUEST_DATA
+}
+type GetDataType = {
+  type: typeof GET_DATA
+  data: Object
+}
+type SetCurrentDayType = {
+  type: typeof SET_CURRENT_DAY
+  day: number
+}
+type ReserveType = {
+  type: typeof SET_CURRENT_SIT
+  item: string
+}
+type CurrentFilmType = {
+  type: typeof SET_CURRENT_FILM
+  film: string
+}
+
+
+
+const initialState: InitialStateType = {
   'date': 1,
   'dates': [
     {
@@ -18,10 +48,11 @@ const initialState = {
   'currentDay': 1,
   'getData': {
     'dates': []
-  }
+  },
+  'currentFilm': ''
 }
 
-const dataReducer = (state = initialState, action) => {
+const dataReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case GET_DATA:
       return {
@@ -46,34 +77,34 @@ const dataReducer = (state = initialState, action) => {
   }
 }
 
-export const fetchData = () => {
+export const fetchData = (): FetchDataType => {
   return {
     type: REQUEST_DATA
   }
 }
 
-export const getData = (data) => {
+export const getData = (data: any): GetDataType => {
   return {
     type: GET_DATA,
     data
   }
 }
 
-export const actionSetCurrentDay = (day) => {
+export const actionSetCurrentDay = (day: number): SetCurrentDayType => {
   return {
     type: SET_CURRENT_DAY,
     day
   }
 }
 
-export const actionReserve = (item) => {
+export const actionReserve = (item: string): ReserveType => {
   return {
     type: SET_CURRENT_SIT,
     item
   }
 }
 
-export const actionCurrentFilm = (film) => {
+export const actionCurrentFilm = (film: string): CurrentFilmType => {
   return {
     type: SET_CURRENT_FILM,
     film
@@ -86,7 +117,8 @@ export function* sagaWatcher() {
   yield takeEvery(REQUEST_DATA, sagaWorker)
 }
 
-function* sagaWorker() {
+
+function* sagaWorker(): Generator {
   yield put(showLoader())
   const payload = yield call(fetchedData)
   yield put(getData(payload))
