@@ -4,9 +4,15 @@ import { Modal, Button, Row, Col } from 'react-bootstrap';
 
 import { StyledSuccess } from '../styled/components/StyledSuccess';
  
-const Success = () => {
-  let { currentDay, film, sit, time } = useParams();
-  
+interface IProps {
+  currentDay?: string | undefined
+  film?: string | undefined
+  sit?: string | undefined
+  time?: string | undefined
+};
+    
+const Success = () => {   
+  let { currentDay, film, sit, time }: IProps = useParams();
   return (
     <StyledSuccess>
       <Modal.Header className="justify-content-center">
