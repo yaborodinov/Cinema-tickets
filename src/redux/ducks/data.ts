@@ -7,15 +7,20 @@ export const REQUEST_DATA = 'my-app/data/REQUEST_DATA';
 export const SET_CURRENT_DAY = 'my-app/data/SET_CURRENT_DAY';
 export const SET_CURRENT_FILM = 'my-app/data/SET_CURRENT_FILM';
 export const SET_CURRENT_SIT = 'my-app/data/SET_CURRENT_SIT';
-
-
-type InitialStateType = {
+interface IInitialStateType {
   'date': number
-  'dates': Array<Object>
+  'dates': [
+    {
+      films:[]
+    }
+  ]
   'currentDay': number
-  'getData': Object
+  'getData': {
+    'dates': []
+  }
   'currentFilm': string
 }
+
 type FetchDataType = {
   type: typeof REQUEST_DATA
 }
@@ -38,7 +43,7 @@ type CurrentFilmType = {
 
 
 
-const initialState: InitialStateType = {
+const initialState: IInitialStateType = {
   'date': 1,
   'dates': [
     {
@@ -52,7 +57,7 @@ const initialState: InitialStateType = {
   'currentFilm': ''
 }
 
-const dataReducer = (state = initialState, action: any): InitialStateType => {
+const dataReducer = (state = initialState, action: any): IInitialStateType => {
   switch (action.type) {
     case GET_DATA:
       return {
