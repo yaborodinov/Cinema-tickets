@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
  
 import { Time, Poster, Loader } from './index';
@@ -13,25 +12,34 @@ import {
   FlexUl,
 } from '../styled/components/StyledBody';
 
+import {IInitialStateType, IFilmsType} from '../redux/ducks/data'
+
 import { fetchData, actionSetCurrentDay, actionCurrentFilm } from '../redux/ducks/data';
 import { StyledAlert } from '../styled/components/StyledAlert';
 
-const Body = ({ onShow, onSelectCurrentTime }) => {
+import { InitialStateType as ILoaderType } from '../redux/ducks/loader';
+
+interface IBodyProps {
+  onShow: () => void
+  onSelectCurrentTime: () => void
+}
+
+const Body = ({ onShow, onSelectCurrentTime }: IBodyProps) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const data = useSelector((state) => state.data);
-  const [currentFilm, setCurrentFilm] = useState(null);
+  const data = useSelector((state: IInitialStateType) => state.data);
+  const [currentFilm, setCurrentFilm] = useState<any>(null);
   const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
-  const [currentDate, setCurrentDate] = useState(1);
+  const [currentDate, setCurrentDate] = useState<any>(1);
   const [isClicked, setIsClicked] = useState(false);
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.loader.loading);
+  const loading = useSelector((state: ILoaderType) => state.loader?.loading);
 
   useEffect(() => {
     dispatch(fetchData());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const dispatchCurrentFilm = (film, index) => {
+  const dispatchCurrentFilm = (film: IFilmsType, index: number) => {
     setCurrentFilm({
       index: index,
       name: film.name,
@@ -57,7 +65,7 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
               </Row>
               <Row>
                 {loading ? <Loader /> : ''}
-                {(data.dates || currentDate).map((element, ind) => (
+                {(data?.dates || currentDate).map((element: any, ind: number) => (
                   <StyledCalendarCol
                     className={currentDate === element.date ? 'active' : ''}
                     border='true'
@@ -108,14 +116,14 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
         <StyledAlert
           variant="danger"
           className={classNames({
-            disabled: !data.dates[currentDate - 1].films[0]?.name,
+            disabled: !data?.dates[currentDate - 1].films[0]?.name,
             transparent: currentFilm,
           })}
         >
           Select the movie to get available sessions
         </StyledAlert>
         <Row className="justify-content-around">
-          {data.dates[currentDate - 1].films.map((poster, index) => (
+          {data?.dates[currentDate - 1].films.map((poster, index) => (
             <Poster
               active={currentFilm?.index === index ? 'active' : ''}
               item={poster}
@@ -127,16 +135,6 @@ const Body = ({ onShow, onSelectCurrentTime }) => {
       </Col>
     </Row>
   );
-};
-
-Body.propTypes = {
-  dates: PropTypes.array.isRequired,
-  onShow: PropTypes.func.isRequired,
-  onSelectCurrentTime: PropTypes.func.isRequired,
-};
-
-Body.defaultProps = {
-  dates: []
 };
 
 export default Body;

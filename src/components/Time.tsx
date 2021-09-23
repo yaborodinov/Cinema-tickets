@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { StyledTime } from '../styled/components/StyledTime';
 
@@ -21,11 +20,5 @@ const Time: React.FC<IPropsType> = ({ time, activeSit, onShow, onSelectCurrentTi
   </StyledTime>
 );
 
-Time.propTypes = {
-  time: PropTypes.array.isRequired,
-  onShow: PropTypes.func.isRequired,
-  activeSit: PropTypes.array.isRequired,
-  onSelectCurrentTime: PropTypes.func.isRequired,
-};
 
 export default Time;

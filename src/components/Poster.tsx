@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 import StyledPoster from '../styled/components/StyledPoster';
 
@@ -23,11 +22,5 @@ const Poster: React.FC<IPropsType> = ({ item, active, onPosterClick }) => {
     </StyledPoster>
   );
 };
-
-// Poster.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   active: PropTypes.string.isRequired,
-//   onPosterClick: PropTypes.func.isRequired
-// };
 
 export default Poster;

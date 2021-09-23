@@ -1,7 +1,10 @@
 export const SHOW_LOADER = 'my-app/loader/SHOW_LOADER';
 export const HIDE_LOADER = 'my-app/loader/HIDE_LOADER';
 
-type InitialStateType = {
+export type InitialStateType = {
+  loader?: {
+    loading: boolean
+  }
   loading: boolean
 }
 type ShowLoaderType = {

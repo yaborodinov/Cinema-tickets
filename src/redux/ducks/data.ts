@@ -7,13 +7,23 @@ export const REQUEST_DATA = 'my-app/data/REQUEST_DATA';
 export const SET_CURRENT_DAY = 'my-app/data/SET_CURRENT_DAY';
 export const SET_CURRENT_FILM = 'my-app/data/SET_CURRENT_FILM';
 export const SET_CURRENT_SIT = 'my-app/data/SET_CURRENT_SIT';
-interface IInitialStateType {
+
+export interface IFilmsType {
+  name: string;
+  description?: string;
+  'age restrictions'?: string;
+  'poster'?: string;
+  sessions: any;
+}
+export interface IDatesType {
+  films: IFilmsType[]
+  date: number
+}
+
+export interface IInitialStateType {
   'date': number
-  'dates': [
-    {
-      films:[]
-    }
-  ]
+  data?: IInitialStateType
+  'dates': IDatesType[]
   'currentDay': number
   'getData': {
     'dates': []
@@ -34,7 +44,7 @@ type SetCurrentDayType = {
 }
 type ReserveType = {
   type: typeof SET_CURRENT_SIT
-  item: string
+  item: IInitialStateType
 }
 type CurrentFilmType = {
   type: typeof SET_CURRENT_FILM
@@ -47,7 +57,8 @@ const initialState: IInitialStateType = {
   'date': 1,
   'dates': [
     {
-      films: []
+      films: [],
+      date: 0
     }
   ],
   'currentDay': 1,
@@ -88,7 +99,7 @@ export const fetchData = (): FetchDataType => {
   }
 }
 
-export const getData = (data: any): GetDataType => {
+export const getData = (data: IInitialStateType): GetDataType => {
   return {
     type: GET_DATA,
     data
@@ -102,7 +113,7 @@ export const actionSetCurrentDay = (day: number): SetCurrentDayType => {
   }
 }
 
-export const actionReserve = (item: string): ReserveType => {
+export const actionReserve = (item: IInitialStateType): ReserveType => {
   return {
     type: SET_CURRENT_SIT,
     item
@@ -125,8 +136,8 @@ export function* sagaWatcher() {
 
 function* sagaWorker(): Generator {
   yield put(showLoader())
-  const payload = yield call(fetchedData)
-  yield put(getData(payload))
+  const payload: IInitialStateType | unknown = yield call(fetchedData)
+  yield put(getData(payload as IInitialStateType))
   yield put(hideLoader())
 }
 
