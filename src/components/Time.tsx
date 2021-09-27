@@ -2,11 +2,13 @@ import React from 'react';
 
 import { StyledTime } from '../styled/components/StyledTime';
 
-interface IPropsType {
+export interface IOnSelectCurrentTime {
+  onSelectCurrentTime: (activeSit: Array<number>) => void
+}
+interface IPropsType extends IOnSelectCurrentTime{
   time: Array<string>
   activeSit: Array<number>
   onShow: () => void
-  onSelectCurrentTime: (activeSit: Array<number>) => void
 }
 
 const Time: React.FC<IPropsType> = ({ time, activeSit, onShow, onSelectCurrentTime }) => (

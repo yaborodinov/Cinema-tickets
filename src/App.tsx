@@ -6,11 +6,11 @@ import { Body, Popup, Header, Success } from './components';
 import { AppWrapper } from './styled/AppWrapper';
 
 const App = () => {
-  const [modalShow, setModalShow] = useState(false);
-  const [currentTime, setCurrentTime] = useState([]);
+  const [modalShow, setModalShow] = useState<boolean>(false);
+  const [currentTime, setCurrentTime] = useState<number[]>([]);
   const location = useLocation();
-  const handleSelectCurrentTime = (item) => {
-    setCurrentTime(item)
+  function handleSelectCurrentTime(activeSit: number[]) {
+    setCurrentTime(activeSit)
   };
   
   useEffect(() => {

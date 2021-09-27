@@ -19,9 +19,10 @@ import { StyledAlert } from '../styled/components/StyledAlert';
 
 import { InitialStateType as ILoaderType } from '../redux/ducks/loader';
 
-interface IBodyProps {
-  onShow: () => void
-  onSelectCurrentTime: () => void
+import { IOnSelectCurrentTime} from './Time'
+export interface IBodyProps extends IOnSelectCurrentTime {
+  onShow?: () => void
+  // onSelectCurrentTime: () => void
 }
 
 const Body = ({ onShow, onSelectCurrentTime }: IBodyProps) => {
