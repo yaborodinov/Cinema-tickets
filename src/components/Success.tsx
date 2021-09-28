@@ -69,7 +69,7 @@ const Success = () => {
       </Modal.Body>
 
       <Modal.Footer>
-        <Link to="/">
+        <Link to='/'>
           <Button variant="success">OK</Button>
         </Link>
       </Modal.Footer>

@@ -20,17 +20,12 @@ interface IProps {
   show: boolean
 }
 
-// type Nullable<T> = T | null 
-
-
 const Popup: React.FC<IProps> = (props) => {
   const info = {
     time: props.time[0],
     activeSit: props.time[1] ? Object.values(props.time[1]) : [],
   };
 
- 
-  
   let [choosenSit, setChoosenSit] = useState<number>(0);
   const [currentPopup, setCurrentPopup] = useState(info);
   const dispatch = useDispatch();
@@ -57,8 +52,6 @@ const Popup: React.FC<IProps> = (props) => {
     } 
   };
 
-  
-  
   const getLocalPopup = async () => {
     const temp: any = await localStorage.getItem('info');
     if (JSON.parse(temp)) {

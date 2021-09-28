@@ -14,11 +14,13 @@ type HideLoaderType = {
   type: typeof HIDE_LOADER
 }
 
+type ActionsTypes = ShowLoaderType | HideLoaderType
+
 const initialState: InitialStateType = {
   loading: false
 }
 
-export const loaderReducer = (state = initialState, action: any): InitialStateType => {
+export const loaderReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
     case SHOW_LOADER:
       return {

@@ -22,5 +22,4 @@ const Time: React.FC<IPropsType> = ({ time, activeSit, onShow, onSelectCurrentTi
   </StyledTime>
 );
 
-
 export default Time;

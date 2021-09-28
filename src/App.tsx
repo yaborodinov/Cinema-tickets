@@ -24,10 +24,10 @@ const App = () => {
     <AppWrapper>
       <Container>
         <Switch>
-          <Route path="/success/:currentDay/:film/:sit/:time" exact>
+          <Route path='/success/:currentDay/:film/:sit/:time' exact>
             <Success />
           </Route>
-          <Route path="/">
+          <Route path='/'>
             <Header />
             <Body
               onSelectCurrentTime={handleSelectCurrentTime}
@@ -35,7 +35,7 @@ const App = () => {
             />
           </Route>
         </Switch>
-        <Route path="/popup" exact>
+        <Route path='/popup' exact>
           <Popup
             time={currentTime}
             show={modalShow}

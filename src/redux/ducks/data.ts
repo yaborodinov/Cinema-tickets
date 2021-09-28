@@ -36,7 +36,7 @@ type FetchDataType = {
 }
 type GetDataType = {
   type: typeof GET_DATA
-  data: Object
+  data: IInitialStateType
 }
 type SetCurrentDayType = {
   type: typeof SET_CURRENT_DAY
@@ -51,7 +51,7 @@ type CurrentFilmType = {
   film: string
 }
 
-
+type ActionTypes = FetchDataType | GetDataType | SetCurrentDayType | ReserveType | CurrentFilmType
 
 const initialState: IInitialStateType = {
   'date': 1,
@@ -68,7 +68,7 @@ const initialState: IInitialStateType = {
   'currentFilm': ''
 }
 
-const dataReducer = (state = initialState, action: any): IInitialStateType => {
+const dataReducer = (state = initialState, action: ActionTypes): IInitialStateType => {
   switch (action.type) {
     case GET_DATA:
       return {
@@ -128,11 +128,9 @@ export const actionCurrentFilm = (film: string): CurrentFilmType => {
 }
 
 // saga
-
 export function* sagaWatcher() {
   yield takeEvery(REQUEST_DATA, sagaWorker)
 }
-
 
 function* sagaWorker(): Generator {
   yield put(showLoader())

@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.14",
     "redux-devtools": "^3.7.0"
   }
 }
