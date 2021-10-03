@@ -9,7 +9,7 @@ const App = () => {
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number[]>([]);
   const location = useLocation();
-  function handleSelectCurrentTime(activeSit: number[]) {
+  const handleSelectCurrentTime = (activeSit: number[]) => {
     setCurrentTime(activeSit)
   };
   
