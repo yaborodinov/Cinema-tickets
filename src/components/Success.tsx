@@ -5,10 +5,10 @@ import { Modal, Button, Row, Col } from 'react-bootstrap';
 import { StyledSuccess } from '../styled/components/StyledSuccess';
  
 interface IProps {
-  currentDay?: string | undefined
-  film?: string | undefined
-  sit?: string | undefined
-  time?: string | undefined
+  currentDay?: string
+  film?: string
+  sit?: string
+  time?: string
 };
     
 const Success = () => {   

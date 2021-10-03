@@ -11,26 +11,30 @@ import {
   CalendarWrapper,
   FlexUl,
 } from '../styled/components/StyledBody';
-
-import {IInitialStateType, IFilmsType} from '../redux/ducks/data'
-
-import { fetchData, actionSetCurrentDay, actionCurrentFilm } from '../redux/ducks/data';
 import { StyledAlert } from '../styled/components/StyledAlert';
 
+import {
+  fetchData,
+  actionSetCurrentDay,
+  actionCurrentFilm,
+  IInitialStateType,
+  IFilmsType,
+  IDatesType,
+  ISession
+} from '../redux/ducks/data';
 import { InitialStateType as ILoaderType } from '../redux/ducks/loader';
 
 import { IOnSelectCurrentTime} from './Time'
 export interface IBodyProps extends IOnSelectCurrentTime {
   onShow?: () => void
-  // onSelectCurrentTime: () => void
 }
 
 const Body = ({ onShow, onSelectCurrentTime }: IBodyProps) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const data = useSelector((state: IInitialStateType) => state.data);
   const [currentFilm, setCurrentFilm] = useState<{index:number, name: string} | null>(null);
-  const [currentFilmSessions, setCurrentFilmSessions] = useState([]);
-  const [currentDate, setCurrentDate] = useState<any>(1);
+  const [currentFilmSessions, setCurrentFilmSessions] = useState<ISession[]>([]);
+  const [currentDate, setCurrentDate] = useState<number>(1);
   const [isClicked, setIsClicked] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector((state: ILoaderType) => state.loader?.loading);
@@ -66,7 +70,7 @@ const Body = ({ onShow, onSelectCurrentTime }: IBodyProps) => {
               </Row>
               <Row>
                 {loading ? <Loader /> : ''}
-                {(data?.dates || currentDate).map((element: any, ind: number) => (
+                {(data?.dates)?.map((element: IDatesType, ind: number) => (
                   <StyledCalendarCol
                     className={currentDate === element.date ? 'active' : ''}
                     border='true'

@@ -7,13 +7,16 @@ export const REQUEST_DATA = 'my-app/data/REQUEST_DATA';
 export const SET_CURRENT_DAY = 'my-app/data/SET_CURRENT_DAY';
 export const SET_CURRENT_FILM = 'my-app/data/SET_CURRENT_FILM';
 export const SET_CURRENT_SIT = 'my-app/data/SET_CURRENT_SIT';
+export interface ISession {
+  [key: string]: boolean[]
+}
 
 export interface IFilmsType {
   name: string;
   description?: string;
   'age restrictions'?: string;
   'poster'?: string;
-  sessions: any;
+  sessions: ISession[];
 }
 export interface IDatesType {
   films: IFilmsType[]
