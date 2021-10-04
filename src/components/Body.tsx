@@ -32,7 +32,7 @@ export interface IBodyProps extends IOnSelectCurrentTime {
 const Body = ({ onShow, onSelectCurrentTime }: IBodyProps) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const data = useSelector((state: IInitialStateType) => state.data);
-  const [currentFilm, setCurrentFilm] = useState<{index:number, name: string} | null>(null);
+  const [currentFilm, setCurrentFilm] = useState< {index:number, name: string} | null >(null);
   const [currentFilmSessions, setCurrentFilmSessions] = useState<ISession[]>([]);
   const [currentDate, setCurrentDate] = useState<number>(1);
   const [isClicked, setIsClicked] = useState(false);

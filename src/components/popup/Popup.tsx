@@ -62,12 +62,12 @@ const Popup: React.FC<IProps> = (props) => {
 
   const setLocalPopup = () => {
     if (info.time) {
-      localStorage.setItem("info", JSON.stringify(info));
+      localStorage.setItem('info', JSON.stringify(info));
     }
   };
 
   const getLocalPopup = () => {
-    const activeSession: string | null = localStorage.getItem("info");
+    const activeSession: string | null = localStorage.getItem('info');
     
     if (activeSession) {
       setCurrentPopup(JSON.parse(activeSession));
