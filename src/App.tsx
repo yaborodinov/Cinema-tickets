@@ -27,7 +27,7 @@ const App = () => {
           <Route path='/success/:currentDay/:film/:sit/:time' exact>
             <Success />
           </Route>
-          <Route path='/'>
+          <Route path="/">
             <Header />
             <Body
               onSelectCurrentTime={handleSelectCurrentTime}
