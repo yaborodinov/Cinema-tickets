@@ -23,19 +23,19 @@ const App = () => {
   return (
     <AppWrapper>
       <Container>
+        <Header />
         <Switch>
-          <Route path='/success/:currentDay/:film/:sit/:time' exact>
+          <Route path="/success/:currentDay/:film/:sit/:time" exact>
             <Success />
           </Route>
           <Route path="/">
-            <Header />
             <Body
               onSelectCurrentTime={handleSelectCurrentTime}
               onShow={() => setModalShow(true)}
             />
           </Route>
         </Switch>
-        <Route path='/popup' exact>
+        <Route path="/popup" exact>
           <Popup
             time={currentTime}
             show={modalShow}

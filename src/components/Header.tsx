@@ -1,12 +1,7 @@
 import React from 'react';
 
-import { Title } from './index';
+import { StyledTitle } from '../styled/components/StyledTitle'; 
 
-const Header = () => (
-  <Title
-    className="d-flex border-bottom border-1 border-white justify-content-center pb-2"
-  >
-  Booking Tickets
-</Title>)
+const Header = () => <StyledTitle>Booking Tickets</StyledTitle>;
 
 export default Header;
