@@ -16,7 +16,7 @@ type HideLoaderType = {
 
 type ActionsTypes = ShowLoaderType | HideLoaderType
 
-const initialState: InitialStateType = {
+export const initialState: InitialStateType = {
   loading: false
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App';
-import Header from './components'
+import Header from './components';
 import toJson from 'enzyme-to-json';
 
 import { shallow } from 'enzyme';
@@ -15,21 +15,21 @@ jest.mock('react-router-dom', () => ({
   }),
 }));
 
-describe('rendering components', () => {
-  it('render App component without crashing', () => {
-    shallow(<App/>)
-  })
+// describe('rendering components', () => {
+//   it('render App component without crashing', () => {
+//     shallow(<App/>)
+//   })
   
-  it('renders App component header without crashing', () => {
-    const wrapper = shallow(<App />)
-    const header = (<Header />);
-    expect(wrapper.contains(header)).toEqual(true)
-  })
-})
+//   it('renders App component header without crashing', () => {
+//     const wrapper = shallow(<App />)
+//     const header = (<Header />);
+//     expect(wrapper.contains(header)).toEqual(true)
+//   })
+// })
 
 describe('snapshots', ()=> {
-  it('Header snapshots', ()=> {
-    const tree = shallow(<Header />)
+  it('App snapshots', ()=> {
+    const tree = shallow(<App />)
     expect(toJson(tree)).toMatchSnapshot()
   })
 })
