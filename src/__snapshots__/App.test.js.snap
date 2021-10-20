@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshots App snapshots 1`] = `
+<styled.div>
+  <Container
+    fluid={false}
+  >
+    <Header />
+    <Component>
+      <Component
+        exact={true}
+        path="/success/:currentDay/:film/:sit/:time"
+      >
+        <Success />
+      </Component>
+      <Component
+        path="/"
+      >
+        <Body
+          onSelectCurrentTime={[Function]}
+          onShow={[Function]}
+        />
+      </Component>
+    </Component>
+    <Component
+      exact={true}
+      path="/popup"
+    >
+      <Popup
+        onHide={[Function]}
+        onShow={[Function]}
+        show={false}
+        time={Array []}
+      />
+    </Component>
+  </Container>
+</styled.div>
+`;
