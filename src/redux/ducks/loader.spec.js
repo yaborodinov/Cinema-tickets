@@ -2,6 +2,8 @@ import {
   loaderReducer,
   SHOW_LOADER,
   HIDE_LOADER,
+  showLoader,
+  hideLoader,
   initialState
 } from './loader.ts';
 
@@ -23,6 +25,20 @@ describe('loaderReducers', () => {
     expect(loaderReducer(initialState, action)).toEqual({
       ...initialState,
       loading: false
+    })
+  })
+})
+
+describe('loaderActions', () => {
+  it('showLoader', () => {
+    expect(showLoader()).toEqual({
+      type: SHOW_LOADER
+    })
+  })
+
+  it('hideLoader', () => {
+    expect(hideLoader()).toEqual({
+      type: HIDE_LOADER
     })
   })
 })

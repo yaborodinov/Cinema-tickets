@@ -1,14 +1,18 @@
+import { takeEvery } from 'redux-saga/effects';
+
 import {
   GET_DATA,
   SET_CURRENT_DAY,
   SET_CURRENT_FILM,
   SET_CURRENT_SIT,
   dataReducer,
-  initialState
+  initialState,
+  sagaWatcher,
+  sagaWorker,
+  REQUEST_DATA
 } from './data.ts';
 
 describe('dataReducer', () => {
-  console.log(initialState)
   it('GET_DATA', () => {
     const action = {
       type: GET_DATA
@@ -53,5 +57,17 @@ describe('dataReducer', () => {
     expect(dataReducer(initialState, action)).toEqual({
       ...SET_CURRENT_SIT.item
     })
+  })
+})
+
+describe('saga sagaWorker function', () => {
+  const genObject = sagaWatcher();
+
+  it('should work showLoader till getData recieve data ', () => {
+    expect(genObject.next().value).toEqual(takeEvery(REQUEST_DATA, sagaWorker))
+  })
+
+  it('should be done on next iteration', () => {
+    expect(genObject.next().done).toBeTruthy()
   })
 })

@@ -135,7 +135,7 @@ export function* sagaWatcher() {
   yield takeEvery(REQUEST_DATA, sagaWorker)
 }
 
-function* sagaWorker(): Generator {
+export function* sagaWorker(): Generator {
   yield put(showLoader())
   const payload: IInitialStateType | unknown = yield call(fetchedData)
   yield put(getData(payload as IInitialStateType))
