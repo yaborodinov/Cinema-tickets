@@ -19,21 +19,29 @@ describe('dataReducer', () => {
   })
 
   it('SET_CURRENT_DAY', () => {
+    const stateBefore = {
+      dates: [1, 12, 3],
+      currentDay: 112
+    }
     const action = {
       type: SET_CURRENT_DAY
     }
-    expect(dataReducer(initialState, action)).toEqual({
-      ...initialState,
+    expect(dataReducer(stateBefore, action)).toEqual({
+      ...stateBefore,
       currentDay: SET_CURRENT_DAY.day
     })
   })
 
   it('SET_CURRENT_FILM', () => {
+    const stateBefore = {
+      dates: [1, 12, 3],
+      currentDay: 112
+    }
     const action = {
       type: SET_CURRENT_FILM
     }
-    expect(dataReducer(initialState, action)).toEqual({
-      ...initialState,
+    expect(dataReducer(stateBefore, action)).toEqual({
+      ...stateBefore,
       currentFilm: SET_CURRENT_FILM.film
     })
   })
