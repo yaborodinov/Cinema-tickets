@@ -56,7 +56,7 @@ type CurrentFilmType = {
 
 type ActionTypes = FetchDataType | GetDataType | SetCurrentDayType | ReserveType | CurrentFilmType
 
-const initialState: IInitialStateType = {
+export const initialState: IInitialStateType = {
   'date': 1,
   'dates': [
     {
@@ -71,7 +71,7 @@ const initialState: IInitialStateType = {
   'currentFilm': ''
 }
 
-const dataReducer = (state = initialState, action: ActionTypes): IInitialStateType => {
+export const dataReducer = (state = initialState, action: ActionTypes): IInitialStateType => {
   switch (action.type) {
     case GET_DATA:
       return {

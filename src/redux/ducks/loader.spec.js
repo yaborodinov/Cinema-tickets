@@ -6,7 +6,6 @@ import {
 } from './loader.ts';
 
 describe('loaderReducers', () => {
-  console.log(loaderReducer);
   it('SHOW_LOADER', () => {
     const action = {
       type: SHOW_LOADER
