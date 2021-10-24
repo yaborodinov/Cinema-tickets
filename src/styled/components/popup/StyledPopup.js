@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button, Modal } from 'react-bootstrap';
 
-import { theme } from '../Global';
+import { theme } from '../../Global';
 
 export const StyledHeader = styled(Modal.Header)`
   position: relative;
