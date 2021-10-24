@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { Alert } from 'react-bootstrap';
 
+import { theme } from '../Global';
+
 export const StyledAlert = styled(Alert)`
   display: block;
   padding: 8px;
-  transition: ${props => props.theme.transition.transition};
+  transition: ${theme.transition.transition};
   &.disabled {
     display: none;
   };

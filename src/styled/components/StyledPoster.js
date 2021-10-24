@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import { Col } from 'react-bootstrap';
 
+import { theme } from '../Global';
+
 const StyledPoster = styled(Col)`
   margin: 30px 20px;
   padding: 12px;
-  transition: ${props => props.theme.transition.transition};
+  transition: ${theme.transition.transition};
   &.active {
     border-radius: 10px;
-    box-shadow: 0px 0px 18px -2px ${props => props.theme.colors.yellow};
+    box-shadow: 0px 0px 18px -2px ${theme.colors.yellow};
   };
   &:hover {
     cursor: pointer;
@@ -18,7 +20,7 @@ const StyledPoster = styled(Col)`
     border-radius:10px;
   };
   h2 {
-    color: ${props => props.theme.colors.primary};
+    color: ${theme.colors.primary};
     text-align: center;
   };
 `;

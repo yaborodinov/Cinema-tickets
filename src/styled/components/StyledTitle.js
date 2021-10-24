@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { theme } from '../Global';
 
 export const StyledTitle = styled('h1')`
